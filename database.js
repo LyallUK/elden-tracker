@@ -3894,7 +3894,7 @@ const database = [
     name: "Hand Ballista",
     image:
       "https://eldenring.wiki.fextralife.com//file/Elden-Ring/hand_ballista_ballista_weapon_elden_ring_wiki_guide_200px.png",
-    category: "Ballistas",
+    category: "Ballista",
     location: [
       "At the top of the Forest Lookout Tower, south west of the Bridge of Sacrifice on the Weeping Peninsula. ",
     ],
@@ -3905,7 +3905,7 @@ const database = [
     name: "Jar Cannon",
     image:
       "https://eldenring.wiki.fextralife.com//file/Elden-Ring/jar_cannon_ballista_weapon_elden_ring_wiki_guide_200px.png",
-    category: "Ballistas",
+    category: "Ballista",
     location: [
       "Dropped by the boss Demi-Human Queen Margot at the end of Volcano Cave north of Mt. Gelmir. ",
     ],
@@ -7839,7 +7839,7 @@ const database = [
   {
     name: "Marionette Soldier Helm",
     image:
-      "https://eldenring.wiki.fextralife.com//file/Elden-Ring/helmet_picture.jpg",
+      "https://eldenring.wiki.fextralife.com/file/Elden-Ring/marionette_soldier_helm_elden_ring_wiki_guide_200px.png",
     category: "head",
     location: [
       "Various places in Liurnia of the Lakes, including Raya Lucaria Academy, Academy Gate Town, and Raya Lucaria Crystal Tunnel. They can also be found in the Witchbane Ruins on the Weeping Peninsula, and on Mt. Gelmir.",

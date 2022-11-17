@@ -1,5 +1,6 @@
-const { app, BrowserWindow, globalShortcut } = require("electron");
+const { app, BrowserWindow, globalShortcut, ipcMain } = require("electron");
 const { overlayWindow } = require("electron-overlay-window");
+const ipc = ipcMain;
 
 -app.disableHardwareAcceleration();
 
@@ -8,8 +9,6 @@ app.whenReady().then(() => {
     ...overlayWindow.WINDOW_OPTS,
     minHeight: 720,
     minWidth: 1280,
-    height: 720,
-    width: 1280,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -26,11 +25,16 @@ app.whenReady().then(() => {
     }
   });
 
-  window.on("blur", () => {
-    window.minimize();
+  window.loadFile("./app.html");
+  overlayWindow.attachTo(window, "ELDEN RING™");
+
+  // Close Window
+  ipc.on("closeApp", () => {
+    window.close();
   });
 
-  window.loadFile("./index.html");
-  overlayWindow.attachTo(window, "ELDEN RING™");
-  window.minimize();
+  // Minimize Window
+  ipc.on("minApp", () => {
+    window.minimize();
+  });
 });

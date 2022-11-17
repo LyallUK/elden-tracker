@@ -242,10 +242,10 @@ body {
 }
 
 #trackerOverlay {
-    background-color: #242526;
+    background-color: rgba(20, 20, 20, 0.9);
     width: 350px;
     height: 180px;
-    display: none;
+    display: fixed;
     position: fixed;
     right: 0;
     top: 10%;
@@ -261,14 +261,13 @@ body {
     height: 100%;
 }
 
-.overlayName {
-    text-transform: uppercase;
-}
-
 .overlayInfo {
     text-transform: capitalize;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 0.8em;
+    text-align: left;
+    overflow-y: hidden;
+    padding: 20px;
 }
 
 .overlayPage {
