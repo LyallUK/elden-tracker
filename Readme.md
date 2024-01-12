@@ -27,7 +27,3 @@ For the completionists out there, being able to see what has or hasnt been colle
 ### **Independant Item Pages**
 
 When looking for more information about the specified object, you would be able to access item specific pages detailing stats and bonuses.
-
-## Disclaimer
-
-This project has been a learning experience for me so there may be many bugs and preformance issues.
