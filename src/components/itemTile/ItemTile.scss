@@ -1,0 +1,43 @@
+.ItemTile {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 1em;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+    cursor: pointer;
+    align-items: center;
+    aspect-ratio: 1;
+}
+
+.ItemTile:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.ItemName {
+    color: #a18b5f;
+    letter-spacing: 1px;
+    font-size: clamp(0.8em, 2vw, 1em);
+    display: block;
+    text-shadow: 0 0.2em 5px black;
+}
+
+.ItemImage {
+    width: 50%;
+    display: block;
+    margin: auto;
+    pointer-events: none;
+}
+
+.ItemButton {
+    display: inline-block;
+    align-self: center;
+    width: 10%;
+    transition: 0.3s;
+    opacity: 0.05;
+    padding: 10px;
+}
+
+.ItemButton:hover {
+    transform: scale(130%);
+}
