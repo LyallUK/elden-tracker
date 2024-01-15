@@ -7,10 +7,8 @@ export default class SearchView extends React.Component{
         super(props);
         this.state = {
             
-
         };
     }
-
 
     render() {
         return(

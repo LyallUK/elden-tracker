@@ -20,21 +20,26 @@ export default class ItemTile extends React.Component {
     handleTrackItem(e){
         if(this.state.tracked == false){
             e.currentTarget.src = UntrackIcon;
+            this.props.trackItemCallBack(this.props.itemName);
             this.setState({tracked: true});
         }
         else{
             e.currentTarget.src = TrackIcon;
+            this.props.untrackItemCallBack(this.props.itemName);
             this.setState({tracked: false});
         }
+
     };
 
     handleCollectItem(e){
         if(this.state.collected == false){
             e.currentTarget.src = UncollectIcon;
+            this.props.collectItemCallBack(this.props.itemName);
             this.setState({collected: true});
         }
         else{
             e.currentTarget.src = CollectIcon;
+            this.props.uncollectItemCallBack(this.props.itemName);
             this.setState({collected: false});
         }
     }
