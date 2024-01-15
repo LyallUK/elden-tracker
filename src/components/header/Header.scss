@@ -1,0 +1,47 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vh 0;
+    height: 5vh;
+    border-bottom: rgba(255, 255, 255, 0.1) solid 1px;
+}
+
+.header-info {
+    display: flex;
+    align-content: center;
+}
+
+.game-logo {
+    width: 200px;
+    margin-right: 1em;
+}
+
+.search-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.info-icon{
+    width: 1.25vw;
+    margin-right: 1em;
+    transition: 0.3s;
+    opacity: 0.2;
+    cursor: pointer;
+}
+.info-icon:hover{
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+.search-bar {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: white;
+    letter-spacing: 1px;
+    width: 320px;
+}
