@@ -1,6 +1,6 @@
 import React from "react";
-import collapsedButton from "../../assets/icons/arrow-up.png";
-import expandedButton from "../../assets/icons/arrow-down.png";
+import collapsedButton from "../../assets/icons/arrow-up.svg";
+import expandedButton from "../../assets/icons/arrow-down.svg";
 
 export default class SearchFilter extends React.Component {
     constructor(props) {

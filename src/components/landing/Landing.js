@@ -7,6 +7,7 @@ import {database as Database} from '../../assets/database.js';
 import Header from '../header/Header';
 import SearchView from '../searchView/SearchView';
 import ItemTile from '../itemTile/ItemTile.js';
+import TrackedItemTile from '../trackedItemTile/TrackedItemTile';
 
 export default class Landing extends React.Component {
     constructor(props) {
@@ -26,18 +27,58 @@ export default class Landing extends React.Component {
 
     // Add selected item to tracker.
     trackItemHandler(itemName){
-        this.state.itemList.forEach((item)=> {
+        this.state.itemList.map((item, index)=> {
             if(item.props.itemName == itemName) {
-                this.setState({ trackedItemList: [...this.state.trackedItemList, item]});
+                const trackedItemObject = 
+                <TrackedItemTile
+                    key={index}
+                    itemName ={item.props.itemName}
+                    itemImage={item.props.itemImage}
+                    itemCategory={item.itemCategory}
+                    itemLocation={item.itemLocation}
+                    itemTracked={item.itemTracked}
+                    itemCollected={item.props.itemCollected}
+                    trackItemCallBack = {this.trackItemHandler}
+                    untrackItemCallBack = {this.untrackItemHandler}
+                    collectItemCallBack = {this.collectItemHandler}
+                    uncollectItemCallBack = {this.uncollectItemHandler}
+                />
+                this.setState({ trackedItemList: [...this.state.trackedItemList, trackedItemObject]}, () => console.log(`Added ${itemName} to Tracker` ));
             }
+            
         })
     }
     
     // Remove selected item from tracker.
     untrackItemHandler(itemName){
         const filteredArray = this.state.trackedItemList.filter((item) => item.props.itemName != itemName);
-        
         this.setState({ trackedItemList: filteredArray}, () => console.log(`Removed ${itemName} from Tracker`));
+
+        let updatedItemList = [];
+        this.state.itemList.map((item) =>{           
+            if(item.props.itemName == itemName){
+                const untrackedItemObject = 
+                    <ItemTile
+                        itemName = {item.props.itemName}
+                        itemImage = {item.props.itemImage}
+                        itemCategory={item.props.itemCategory}
+                        itemLocation={item.props.itemLocation}
+                        itemTracked={false}
+                        itemCollected={item.props.itemCollected}
+                        trackItemCallBack = {this.trackItemHandler}
+                        untrackItemCallBack = {this.untrackItemHandler}
+                        collectItemCallBack = {this.collectItemHandler}
+                        uncollectItemCallBack = {this.uncollectItemHandler}
+                    />
+                
+                updatedItemList.push(untrackedItemObject);
+                // const updatedItemList = this.state.itemList.splice(this.state.itemList.indexOf(item), 1, untrackedItemObject);
+
+            } else updatedItemList.push(item);
+            
+        })
+        this.setState({itemList: updatedItemList});
+
     }
 
     // Add selected item to collecedItems.
@@ -77,16 +118,12 @@ export default class Landing extends React.Component {
         })
         this.setState({itemList});
     }
-
     
-
     render() {
         return (
             <div className="landing">
                 <Header />
-                <SearchView itemList = {this.state.itemList} />
-                
-
+                <SearchView itemList = {this.state.itemList} trackedItemList = {this.state.trackedItemList} />
             </div>
         );
     }
