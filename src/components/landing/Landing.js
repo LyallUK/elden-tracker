@@ -6,7 +6,8 @@ import {database as Database} from '../../assets/database.js';
 //component imports
 import Header from '../header/Header';
 import SearchView from '../searchView/SearchView';
-import ItemTile from '../itemTile/ItemTile.js';
+import TrackerView from '../trackerView/TrackerView'
+import ItemTile from '../itemTile/ItemTile';
 import TrackedItemTile from '../trackedItemTile/TrackedItemTile';
 
 export default class Landing extends React.Component {
@@ -72,7 +73,6 @@ export default class Landing extends React.Component {
                     />
                 
                 updatedItemList.push(untrackedItemObject);
-                // const updatedItemList = this.state.itemList.splice(this.state.itemList.indexOf(item), 1, untrackedItemObject);
 
             } else updatedItemList.push(item);
             
@@ -124,6 +124,7 @@ export default class Landing extends React.Component {
             <div className="landing">
                 <Header />
                 <SearchView itemList = {this.state.itemList} trackedItemList = {this.state.trackedItemList} />
+                <TrackerView trackedItemList = {this.state.trackedItemList}/>  
             </div>
         );
     }

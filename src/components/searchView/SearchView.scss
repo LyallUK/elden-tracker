@@ -1,12 +1,23 @@
 .search-view-wrapper{
     display: flex;
-    flex-grow: 1;
+    //flex-grow: 1;
+}
+
+.tracking-view-button {
+    cursor: pointer;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.2);
+    margin: 0 0.75vw;
+    
 }
 
 .item-list {
     overflow-y: scroll;
     margin-top: 2.75vh;
-    height: 91vh;
+    height: 87.25vh;
     display: flex;
     width: fit-content;
     flex-wrap: wrap;
@@ -18,7 +29,7 @@
 .track-list{
     overflow-y: scroll;
     margin-top: 2.75vh;
-    height: 91vh;
+    height: 87.25vh;
     width: fit-content;
     display: flex;
     flex-direction: column;
