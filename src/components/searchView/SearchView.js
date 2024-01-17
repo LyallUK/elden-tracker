@@ -2,12 +2,14 @@ import React from "react";
 
 //Component imports
 import ItemTile from "../itemTile/ItemTile.js";
+import TrackedItemTile from "../trackedItemTile/TrackedItemTile.js";
 
 //Asset Imports
 import {database as Database} from '../../assets/database.js';
 
 function SearchView(props){
 
+    //serve entire db as list of ItemTile components
     const serveItemList = () => {
         const itemList = Database.map((item) =>{
             return <ItemTile
@@ -17,7 +19,7 @@ function SearchView(props){
                 itemImage = {item.image}
                 itemCategory = {item.category}
                 itemLocation = {item.location}
-                itemTracked = {item.tracked}
+                itemTracked = {props.isTrackedbyID()}
                 itemCollected = {item.collected}
                 trackedIDList = {props.trackedIDList}
                 addTrackedID = {props.addTrackedID}
@@ -29,6 +31,29 @@ function SearchView(props){
         })
         return itemList;
     }
+    
+    //serve trackedItemTile list of items where item ids match trackedIDList
+    const serveTrackedItemList = () => {
+        const trackedItemList = Database.filter((item) => props.trackedIDList.includes(item.id)).map((item) =>{
+            return <TrackedItemTile
+                key = {item.id}
+                id = {item.id}
+                itemName = {item.name}
+                itemImage = {item.image}
+                itemCategory = {item.category}
+                itemLocation = {item.location}
+                itemTracked = {props.isTrackedbyID()}
+                itemCollected = {item.collected}
+                trackedIDList = {props.trackedIDList}
+                addTrackedID = {props.addTrackedID}
+                removeTrackedID = {props.removeTrackedID}
+                collectedIDList = {props.collectedIDList}
+                addCollectedID = {props.addCollectedID}
+                removeCollectedID = {props.removeCollectedID}
+            />
+        })
+        return trackedItemList;
+    }
 
     
     return(
@@ -37,9 +62,7 @@ function SearchView(props){
                 {serveItemList()}
             </div>
             <div className="track-list">
-                {
-                    //serve tracked item list here
-                }
+                {serveTrackedItemList()}
             </div>
         </div>
     )

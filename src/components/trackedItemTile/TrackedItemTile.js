@@ -6,53 +6,46 @@ import UntrackIcon from '../../assets/icons/untrackButton.svg';
 import CollectIcon from '../../assets/icons/collectButton.svg';
 import UncollectIcon from '../../assets/icons/uncollectButton.svg';
 
-export default class TrackedItemTile extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            tracked: this.props.itemTracked,
-            collected: this.props.itemCollected
-        };
-        this.handleTrackItem = this.handleTrackItem.bind(this);
-        this.handleCollectItem = this.handleCollectItem.bind(this);
-    }
-
-    handleTrackItem(e){
-        if(this.state.tracked == false){
-            e.currentTarget.src = UntrackIcon;
-            this.props.trackItemCallBack(this.props.itemName);
-            this.setState({tracked: true});
+function TrackedItemTile(props) {
+    
+    const handleTrackItem = (e) => {
+        if(props.trackedIDList.includes(props.id)){
+            e.currentTarget.src = TrackIcon;
+            props.removeTrackedID(props.id);
         }
         else{
-            e.currentTarget.src = TrackIcon;
-            this.props.untrackItemCallBack(this.props.itemName);
-            this.setState({tracked: false});
+            e.currentTarget.src = UntrackIcon;
+            props.addTrackedID(props.id);
         }
     };
 
-    handleCollectItem(e){
-        if(this.state.collected == false){
-            e.currentTarget.src = UncollectIcon;
-            this.props.collectItemCallBack(this.props.itemName);
-            this.setState({collected: true});
+    const handleCollectItem = (e) => {
+        if(props.collectedIDList.includes(props.id)){
+            e.currentTarget.src = CollectIcon;
+            props.removeCollectedID(props.id);
         }
         else{
-            e.currentTarget.src = CollectIcon;
-            this.props.uncollectItemCallBack(this.props.itemName);
-            this.setState({collected: false});
+            e.currentTarget.src = UncollectIcon;
+            props.addCollectedID(props.id);
         }
     }
 
-    render() {
-        return (
-            <div className="tracker-tile">
-                <img className="tracker-image" src={this.props.itemImage} alt="Item"></img>
-                <span className="tracker-name">{this.props.itemName}</span>
-                <div className="tracker-buttons">
-                    <img className="tracker-button" id="track-button" src={UntrackIcon} onClick={this.handleTrackItem} alt="+"></img>
-                    <img className="tracker-button" id="collected-button" src={CollectIcon} onClick={this.handleCollectItem} alt="c"></img>
-                </div>
-            </div>
-        );
+    const serveTrackingIcon = () => {
+        if(props.itemTracked == true){
+            return UntrackIcon;
+        } else return TrackIcon;
     }
-}
+
+    return (
+        <div className="tracker-tile">
+            <img className="tracker-image" src={props.itemImage} alt="Item"></img>
+            <span className="tracker-name">{props.itemName}</span>
+            <div className="tracker-buttons">
+                <img className="tracker-button" id="track-button" src={serveTrackingIcon()} onClick={handleTrackItem} alt="+"></img>
+                <img className="tracker-button" id="collected-button" src={CollectIcon} onClick={handleCollectItem} alt="c"></img>
+            </div>
+        </div>
+    );
+} 
+
+export default TrackedItemTile;

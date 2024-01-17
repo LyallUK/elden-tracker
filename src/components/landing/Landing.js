@@ -18,7 +18,6 @@ function Landing() {
     //add an ID to state: trackedIDList
     const addTrackedID = (itemID) => {
         setTrackedIDList([... trackedIDList, itemID]);
-        console.log(itemID);
     }
 
     //remove an ID to state: trackedIDList
@@ -34,6 +33,12 @@ function Landing() {
     //remove an ID to state: collectedIDList
     const removeCollectedID = (itemID) => {
         setCollectedIDList(collectedIDList.filter((collectedID) => collectedID != itemID));
+    }
+
+    const isTrackedbyID = (itemID) => {
+        if(trackedIDList.includes(itemID)){
+            return true;
+        } return false;
     }
 
     const updateDatabase = (updatedDB) => {
@@ -60,6 +65,7 @@ function Landing() {
                 collectedIDList = {collectedIDList}
                 addCollectedID = {addCollectedID}
                 removeCollectedID = {removeCollectedID}
+                isTrackedbyID = {isTrackedbyID}
             />
             {/* <TrackerView trackedIDList = {trackedIDList}/>   */}
         </div>

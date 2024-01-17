@@ -1,8 +1,9 @@
 DONE:
-- database now contains unique identifier values
-- ItemTile implemented as a functional component
-- 
+- serveTrackedItemList function in SearchView implemented
+- Implement TrackedItemTile as a functional component
 
 
 TO DO:
+- Filter item list by search term
+- Fix Bug where trackedItemTile tracking icon doesnt update
 - Create write to database functions
