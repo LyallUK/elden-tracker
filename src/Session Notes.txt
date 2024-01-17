@@ -1,2 +1,7 @@
-- added conditionally rendered tracking view button on searchView
-- minor css updates to scrollable sections
+DONE:
+- Converting existing class components to functional components
+
+
+TO DO:
+- Create write to database functions
+- use database write function to add unique ID value

@@ -2,37 +2,27 @@ import React from "react";
 
 //component imports
 
+//Asset Imports
+import {database as Database} from '../../assets/database.js';
 
-export default class SearchView extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            itemsTracked: false
-        };
-        this.serveTrackingButton = this.serveTrackingButton.bind(this);
-    }
 
-    serveTrackingButton(){
-        if(this.props.trackedItemList.length != 0) {
-            return (
-                <div className="tracking-view-button">
-                    <p>Tracking View</p>
-                </div>
-            )
-        }
-    }
+function SearchView(props){
 
-    render() {
-        return(
-            <div className="search-view-wrapper">
-                <div className="item-list">
-                    {this.props.itemList}
-                </div>
-                <div className="track-list">
-                    {this.serveTrackingButton()}
-                    {this.props.trackedItemList}
-                </div>
+    return(
+        <div className="search-view-wrapper">
+            <div className="item-list">
+                {
+                    //serve fitlered item list here
+                }
             </div>
-        )
-    }
+            <div className="track-list">
+                {
+                    //serve tracked item list here
+                }
+            </div>
+        </div>
+    )
+    
 }
+
+export default SearchView;
