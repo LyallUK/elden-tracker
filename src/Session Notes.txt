@@ -1,7 +1,8 @@
 DONE:
-- Converting existing class components to functional components
+- database now contains unique identifier values
+- ItemTile implemented as a functional component
+- 
 
 
 TO DO:
 - Create write to database functions
-- use database write function to add unique ID value

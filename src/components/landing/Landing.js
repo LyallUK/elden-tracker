@@ -18,10 +18,11 @@ function Landing() {
     //add an ID to state: trackedIDList
     const addTrackedID = (itemID) => {
         setTrackedIDList([... trackedIDList, itemID]);
+        console.log(itemID);
     }
 
     //remove an ID to state: trackedIDList
-    const removeTrackedIDList = (itemID) => {
+    const removeTrackedID = (itemID) => {
         setTrackedIDList(trackedIDList.filter((trackedID) => trackedID != itemID));
     }
 
@@ -45,23 +46,7 @@ function Landing() {
         console.log(searchTerm.target.value);
     }
 
-    //temp function to pull in database and produce an updated array with unique ID property on items
-    const makeDatabaseItemsUnique = () => {
-        let uniqueID = 0;
-        const updatedDatabase = Database.map(item => {
-            uniqueID++;
-            return {
-              ...item,
-              id: uniqueID-1,
-            };
-          });
-
-          //transform updated db into Json
-          //const updatedDatabaseString = `export const Database = ${JSON.stringify(updatedDatabase, null, 2)};\n`;
-
-          console.log(updatedDatabase);
-    }
-    makeDatabaseItemsUnique();
+    
 
     return (
         <div className="landing">
@@ -71,7 +56,7 @@ function Landing() {
             <SearchView 
                 trackedIDList = {trackedIDList}
                 addTrackedID = {addTrackedID}
-                removeTrackedIDList = {removeTrackedIDList}
+                removeTrackedID = {removeTrackedID}
                 collectedIDList = {collectedIDList}
                 addCollectedID = {addCollectedID}
                 removeCollectedID = {removeCollectedID}
