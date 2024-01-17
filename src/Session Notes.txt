@@ -1,0 +1,2 @@
+- added conditionally rendered tracking view button on searchView
+- minor css updates to scrollable sections
