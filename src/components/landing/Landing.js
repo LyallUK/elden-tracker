@@ -6,9 +6,6 @@ import {database as Database} from '../../assets/database.js';
 //component imports
 import Header from '../header/Header';
 import SearchView from '../searchView/SearchView';
-// import TrackerView from '../trackerView/TrackerView'
-// import ItemTile from '../itemTile/ItemTile';
-// import TrackedItemTile from '../trackedItemTile/TrackedItemTile';
 
 function Landing() {
     //component states
@@ -36,12 +33,6 @@ function Landing() {
         setCollectedIDList(collectedIDList.filter((collectedID) => collectedID != itemID));
     }
 
-    const isTrackedbyID = (itemID) => {
-        if(trackedIDList.includes(itemID)){
-            return true;
-        } return false;
-    }
-
     //handler function for search term - callback function found in Header component
     const handleSearchBar = (searchTerm) => {
         setSearchTerm(searchTerm);
@@ -64,7 +55,6 @@ function Landing() {
                 collectedIDList = {collectedIDList}
                 addCollectedID = {addCollectedID}
                 removeCollectedID = {removeCollectedID}
-                isTrackedbyID = {isTrackedbyID}
                 searchTerm = {searchTerm}
             />
             {/* <TrackerView trackedIDList = {trackedIDList}/>   */}

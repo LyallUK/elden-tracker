@@ -30,10 +30,16 @@ function TrackedItemTile(props) {
         }
     }
 
-    const serveTrackingIcon = () => {
+    const serveTrackedIcon = () => {
         if(props.itemTracked == true){
             return UntrackIcon;
         } else return TrackIcon;
+    }
+
+    const serveCollectedIcon = () => {
+        if(props.itemCollected == true){
+            return UncollectIcon;
+        } else return CollectIcon;
     }
 
     return (
@@ -41,8 +47,8 @@ function TrackedItemTile(props) {
             <img className="tracker-image" src={props.itemImage} alt="Item"></img>
             <span className="tracker-name">{props.itemName}</span>
             <div className="tracker-buttons">
-                <img className="tracker-button" id="track-button" src={serveTrackingIcon()} onClick={handleTrackItem} alt="+"></img>
-                <img className="tracker-button" id="collected-button" src={CollectIcon} onClick={handleCollectItem} alt="c"></img>
+                <img className="tracker-button" id="track-button" src={serveTrackedIcon()} onClick={handleTrackItem} alt="+"></img>
+                <img className="tracker-button" id="collected-button" src={serveCollectedIcon()} onClick={handleCollectItem} alt="c"></img>
             </div>
         </div>
     );

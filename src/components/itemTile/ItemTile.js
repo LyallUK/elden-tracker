@@ -21,14 +21,26 @@ function ItemTile(props) {
     };
 
     const handleCollectItem = (e) => {
-        if(props.collectedIDList.includes(props.key)){
+        if(props.collectedIDList.includes(props.id)){
             e.currentTarget.src = CollectIcon;
-            props.removeCollectedID(props.key);
+            props.removeCollectedID(props.id);
         }
         else{
             e.currentTarget.src = UncollectIcon;
-            props.addCollectedID(props.key);
+            props.addCollectedID(props.id);
         }
+    }
+
+    const serveTrackedIcon = () => {
+        if(props.itemTracked == true){
+            return UntrackIcon;
+        } else return TrackIcon;
+    }
+
+    const serveCollectedIcon = () => {
+        if(props.itemCollected == true){
+            return UncollectIcon;
+        } else return CollectIcon;
     }
 
     return (
@@ -36,8 +48,8 @@ function ItemTile(props) {
             <span className="item-name">{props.itemName}</span>
             <img className="item-image" src={props.itemImage} alt="Item"></img>
             <div className="item-buttons">
-                <img className="item-button" id="track-button" src={TrackIcon} onClick={handleTrackItem} alt="+"></img>
-                <img className="item-button" id="collected-button" src={CollectIcon} onClick={handleCollectItem} alt="c"></img>
+                <img className="item-button" id="track-button" src={serveTrackedIcon()} onClick={handleTrackItem} alt="+"></img>
+                <img className="item-button" id="collected-button" src={serveCollectedIcon()} onClick={handleCollectItem} alt="c"></img>
             </div>
         </div>
     );

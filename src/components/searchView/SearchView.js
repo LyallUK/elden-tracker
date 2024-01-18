@@ -9,6 +9,18 @@ import {database as Database} from '../../assets/database.js';
 
 function SearchView(props){
 
+    const idIsTracked = (itemID) => {
+        if(props.trackedIDList.includes(itemID)){
+            return true;
+        } return false;
+    }
+
+    const idIsCollected = (itemID) => {
+        if(props.collectedIDList.includes(itemID)){
+            return true;
+        } return false;
+    }
+
     //serve entire db as list of ItemTile components
     const serveItemList = () => {
         const itemList = Database.map((item) =>{
@@ -19,8 +31,8 @@ function SearchView(props){
                 itemImage = {item.image}
                 itemCategory = {item.category}
                 itemLocation = {item.location}
-                itemTracked = {props.isTrackedbyID()}
-                itemCollected = {item.collected}
+                itemTracked = {idIsTracked(item.id)}
+                itemCollected = {idIsCollected(item.id)}
                 trackedIDList = {props.trackedIDList}
                 addTrackedID = {props.addTrackedID}
                 removeTrackedID = {props.removeTrackedID}
@@ -44,8 +56,8 @@ function SearchView(props){
                 itemImage = {item.image}
                 itemCategory = {item.category}
                 itemLocation = {item.location}
-                itemTracked = {props.isTrackedbyID()}
-                itemCollected = {item.collected}
+                itemTracked = {idIsTracked(item.id)}
+                itemCollected = {idIsCollected(item.id)}
                 trackedIDList = {props.trackedIDList}
                 addTrackedID = {props.addTrackedID}
                 removeTrackedID = {props.removeTrackedID}
