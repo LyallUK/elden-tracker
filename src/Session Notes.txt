@@ -1,9 +1,7 @@
 DONE:
-- serveTrackedItemList function in SearchView implemented
-- Implement TrackedItemTile as a functional component
+- Filter item list by search term
 
 
 TO DO:
-- Filter item list by search term
 - Fix Bug where trackedItemTile tracking icon doesnt update
 - Create write to database functions

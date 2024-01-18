@@ -29,7 +29,9 @@ function SearchView(props){
                 removeCollectedID = {props.removeCollectedID}
             />
         })
-        return itemList;
+
+        const filteredItemList = itemList.filter((item) => item.props.itemName.toLowerCase().includes(props.searchTerm.toLowerCase()));
+        return filteredItemList;
     }
     
     //serve trackedItemTile list of items where item ids match trackedIDList
@@ -66,7 +68,6 @@ function SearchView(props){
             </div>
         </div>
     )
-    
 }
 
 export default SearchView;

@@ -1,6 +1,7 @@
 .item-tile {
     box-sizing: border-box;
     width: 15vw;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -18,9 +19,10 @@
 }
 
 .item-name {
+    height: 5vh;
     color: #a18b5f;
     letter-spacing: 1px;
-    font-size: clamp(0.8em, 2vw, 1em);
+    font-size: 1rem;
     display: block;
     text-shadow: 0 0.2em 5px black;
 }

@@ -9,6 +9,10 @@ import HelpIcon from '../../assets/icons/helpButton.svg';
 
  function Header(props) {
 
+    const handleSearchBar = (e) => {
+        props.searchTermCallBack(e.target.value);
+    }
+
     return (
         <div className="header">
             <div className="header-info">
@@ -23,7 +27,7 @@ import HelpIcon from '../../assets/icons/helpButton.svg';
             </div>
             <div className="search-container">
                 <img className="info-icon" src={SearchFilter} alt="Filter Symbol"></img>
-                <input className="search-bar" type="text" spellCheck="false" placeholder="SEARCH..." onChange={props.searchTermCallBack}></input>
+                <input className="search-bar" type="text" spellCheck="false" placeholder="SEARCH..." onChange={handleSearchBar}></input>
             </div>
         </div>
     )

@@ -14,6 +14,7 @@ function Landing() {
     //component states
     const [trackedIDList, setTrackedIDList] = useState([]);
     const [collectedIDList, setCollectedIDList] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
 
     //add an ID to state: trackedIDList
     const addTrackedID = (itemID) => {
@@ -41,17 +42,15 @@ function Landing() {
         } return false;
     }
 
-    const updateDatabase = (updatedDB) => {
-    }
-    //updateDatabase();
-
-
     //handler function for search term - callback function found in Header component
     const handleSearchBar = (searchTerm) => {
-        console.log(searchTerm.target.value);
+        setSearchTerm(searchTerm);
     }
 
-    
+    //
+    const updateDatabase = (updatedDB) => {
+    }
+
 
     return (
         <div className="landing">
@@ -66,6 +65,7 @@ function Landing() {
                 addCollectedID = {addCollectedID}
                 removeCollectedID = {removeCollectedID}
                 isTrackedbyID = {isTrackedbyID}
+                searchTerm = {searchTerm}
             />
             {/* <TrackerView trackedIDList = {trackedIDList}/>   */}
         </div>
