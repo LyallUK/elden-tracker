@@ -8,47 +8,39 @@ import UncollectIcon from '../../assets/icons/uncollectButton.svg';
 
 function TrackedItemTile(props) {
     
-    const handleTrackItem = (e) => {
+    const handleTrackItem = () => {
         if(props.trackedIDList.includes(props.id)){
-            e.currentTarget.src = TrackIcon;
             props.removeTrackedID(props.id);
         }
         else{
-            e.currentTarget.src = UntrackIcon;
             props.addTrackedID(props.id);
         }
     };
 
-    const handleCollectItem = (e) => {
+    const handleCollectItem = () => {
         if(props.collectedIDList.includes(props.id)){
-            e.currentTarget.src = CollectIcon;
             props.removeCollectedID(props.id);
         }
         else{
-            e.currentTarget.src = UncollectIcon;
             props.addCollectedID(props.id);
         }
     }
 
-    const serveTrackedIcon = () => {
-        if(props.itemTracked == true){
-            return UntrackIcon;
-        } else return TrackIcon;
-    }
+    // const serveTrackedIcon = () => {
+    //     return props.itemTracked ? UntrackIcon : TrackIcon;
+    // }
 
-    const serveCollectedIcon = () => {
-        if(props.itemCollected == true){
-            return UncollectIcon;
-        } else return CollectIcon;
-    }
+    // const serveCollectedIcon = () => {
+    //     return props.itemCollected ? UncollectIcon : CollectIcon;
+    // }
 
     return (
         <div className="tracker-tile">
             <img className="tracker-image" src={props.itemImage} alt="Item"></img>
             <span className="tracker-name">{props.itemName}</span>
             <div className="tracker-buttons">
-                <img className="tracker-button" id="track-button" src={serveTrackedIcon()} onClick={handleTrackItem} alt="+"></img>
-                <img className="tracker-button" id="collected-button" src={serveCollectedIcon()} onClick={handleCollectItem} alt="c"></img>
+                <img className="tracker-button" id="track-button" src={props.serveTrackedIcon(props.id)} onClick={handleTrackItem} alt="+"></img>
+                <img className="tracker-button" id="collected-button" src={props.serveCollectedIcon(props.id)} onClick={handleCollectItem} alt="c"></img>
             </div>
         </div>
     );

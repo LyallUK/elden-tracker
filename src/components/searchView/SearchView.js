@@ -4,21 +4,30 @@ import React from "react";
 import ItemTile from "../itemTile/ItemTile.js";
 import TrackedItemTile from "../trackedItemTile/TrackedItemTile.js";
 
+
 //Asset Imports
 import {database as Database} from '../../assets/database.js';
+import TrackIcon from '../../assets/icons/trackButton.svg';
+import UntrackIcon from '../../assets/icons/untrackButton.svg';
+import CollectIcon from '../../assets/icons/collectButton.svg';
+import UncollectIcon from '../../assets/icons/uncollectButton.svg';
 
 function SearchView(props){
 
     const idIsTracked = (itemID) => {
-        if(props.trackedIDList.includes(itemID)){
-            return true;
-        } return false;
+        return props.trackedIDList.includes(itemID);
     }
 
     const idIsCollected = (itemID) => {
-        if(props.collectedIDList.includes(itemID)){
-            return true;
-        } return false;
+        return props.collectedIDList.includes(itemID);
+    }
+
+    const serveTrackedIcon = (itemID) => {
+        return idIsTracked(itemID) ? UntrackIcon : TrackIcon;
+    }
+
+    const serveCollectedIcon = (itemID) => {
+        return idIsCollected(itemID) ? UncollectIcon : CollectIcon;
     }
 
     //serve entire db as list of ItemTile components
@@ -31,14 +40,14 @@ function SearchView(props){
                 itemImage = {item.image}
                 itemCategory = {item.category}
                 itemLocation = {item.location}
-                itemTracked = {idIsTracked(item.id)}
-                itemCollected = {idIsCollected(item.id)}
                 trackedIDList = {props.trackedIDList}
                 addTrackedID = {props.addTrackedID}
                 removeTrackedID = {props.removeTrackedID}
                 collectedIDList = {props.collectedIDList}
                 addCollectedID = {props.addCollectedID}
                 removeCollectedID = {props.removeCollectedID}
+                serveTrackedIcon = {serveTrackedIcon}
+                serveCollectedIcon = {serveCollectedIcon}
             />
         })
 
@@ -56,14 +65,14 @@ function SearchView(props){
                 itemImage = {item.image}
                 itemCategory = {item.category}
                 itemLocation = {item.location}
-                itemTracked = {idIsTracked(item.id)}
-                itemCollected = {idIsCollected(item.id)}
                 trackedIDList = {props.trackedIDList}
                 addTrackedID = {props.addTrackedID}
                 removeTrackedID = {props.removeTrackedID}
                 collectedIDList = {props.collectedIDList}
                 addCollectedID = {props.addCollectedID}
                 removeCollectedID = {props.removeCollectedID}
+                serveTrackedIcon = {serveTrackedIcon}
+                serveCollectedIcon = {serveCollectedIcon}
             />
         })
         return trackedItemList;
