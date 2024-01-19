@@ -1,6 +1,7 @@
 import React from "react";
 
-function ItemTile(props) {
+
+function DetailedItemTile(props) {
 
     const handleTrackItem = () => {
         if(props.trackedIDList.includes(props.id)){
@@ -19,18 +20,18 @@ function ItemTile(props) {
             props.addCollectedID(props.id);
         }
     }
-
-    return (
-        <div className="item-tile">
-            <span className="item-name">{props.itemName}</span>
-            <img className="item-image" src={props.itemImage} alt="Item"></img>
-            <div className="item-buttons">
+    
+    
+    return(
+        <div className="detailed-item-wrapper">
+            <span className="detailed-item-name">{props.itemName}</span>
+            <img className="detailed-item-image" src={props.itemImage} alt="detailed-Item"></img>
+            <div className="detailed-item-buttons">
                 <img className="item-button" id="track-button" src={props.serveTrackedIcon(props.id)} onClick={handleTrackItem} alt="+"></img>
                 <img className="item-button" id="collected-button" src={props.serveCollectedIcon(props.id)} onClick={handleCollectItem} alt="c"></img>
             </div>
         </div>
-    );
-    
+    )
 }
 
-export default ItemTile;
+export default DetailedItemTile;

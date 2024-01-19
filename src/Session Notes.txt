@@ -1,6 +1,6 @@
 DONE:
-- ItemTile and TrackedItemTile components tidied up to remove anti pattens
-- serveCollectedIcon and serveTrackedIcon functions moved to SearchView and pass as props to child components
+- Conditional rendering for search and tracking views implemented
+- implemented DetailedTrackedItemitle
 
 TO DO:
 - Create write to database functions

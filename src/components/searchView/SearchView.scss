@@ -11,7 +11,9 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     background-color: rgba(0, 0, 0, 0.2);
     margin: 0 0.75vw;
-    
+    width: fit-content;
+    padding: 1vh 5vw;
+    align-self: center;
 }
 
 .item-list {

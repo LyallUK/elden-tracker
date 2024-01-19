@@ -1,11 +1,5 @@
 import React from "react";
 
-//component imports
-import TrackIcon from '../../assets/icons/trackButton.svg';
-import UntrackIcon from '../../assets/icons/untrackButton.svg';
-import CollectIcon from '../../assets/icons/collectButton.svg';
-import UncollectIcon from '../../assets/icons/uncollectButton.svg';
-
 function TrackedItemTile(props) {
     
     const handleTrackItem = () => {
@@ -25,14 +19,6 @@ function TrackedItemTile(props) {
             props.addCollectedID(props.id);
         }
     }
-
-    // const serveTrackedIcon = () => {
-    //     return props.itemTracked ? UntrackIcon : TrackIcon;
-    // }
-
-    // const serveCollectedIcon = () => {
-    //     return props.itemCollected ? UncollectIcon : CollectIcon;
-    // }
 
     return (
         <div className="tracker-tile">

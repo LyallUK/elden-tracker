@@ -4,7 +4,6 @@ import React from "react";
 import ItemTile from "../itemTile/ItemTile.js";
 import TrackedItemTile from "../trackedItemTile/TrackedItemTile.js";
 
-
 //Asset Imports
 import {database as Database} from '../../assets/database.js';
 import TrackIcon from '../../assets/icons/trackButton.svg';
@@ -28,6 +27,10 @@ function SearchView(props){
 
     const serveCollectedIcon = (itemID) => {
         return idIsCollected(itemID) ? UncollectIcon : CollectIcon;
+    }
+
+    const handleChangeView = () => {
+        props.serveViewCallBack('track');
     }
 
     //serve entire db as list of ItemTile components
@@ -77,15 +80,27 @@ function SearchView(props){
         })
         return trackedItemList;
     }
-
     
     return(
         <div className="search-view-wrapper">
             <div className="item-list">
                 {serveItemList()}
             </div>
-            <div className="track-list">
-                {serveTrackedItemList()}
+            <div className="search-view-tracked-wrapper">
+                <div className="track-list">
+                    {
+                    !!props.trackedIDList.length > 0 
+                        ?
+                            <div className="tracking-view-button" onClick={handleChangeView}>
+                                <a>View Tracking</a>
+                            </div>
+                        : 
+                            ''
+                    }
+                    <div>
+                        {serveTrackedItemList()}
+                    </div>
+                </div>
             </div>
         </div>
     )

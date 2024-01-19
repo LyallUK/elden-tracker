@@ -6,12 +6,14 @@ import {database as Database} from '../../assets/database.js';
 //component imports
 import Header from '../header/Header';
 import SearchView from '../searchView/SearchView';
+import TrackerView from '../trackerView/TrackerView';
 
 function Landing() {
     //component states
     const [trackedIDList, setTrackedIDList] = useState([]);
     const [collectedIDList, setCollectedIDList] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
+    const [currentView, setCurrentView] = useState('search');
 
     //add an ID to state: trackedIDList
     const addTrackedID = (itemID) => {
@@ -38,6 +40,10 @@ function Landing() {
         setSearchTerm(searchTerm);
     }
 
+    const handleChangeView = (nextView) => {
+        setCurrentView(nextView);
+    }
+
     //
     const updateDatabase = (updatedDB) => {
     }
@@ -48,16 +54,29 @@ function Landing() {
             <Header 
                 searchTermCallBack = {handleSearchBar}
             />
-            <SearchView 
-                trackedIDList = {trackedIDList}
-                addTrackedID = {addTrackedID}
-                removeTrackedID = {removeTrackedID}
-                collectedIDList = {collectedIDList}
-                addCollectedID = {addCollectedID}
-                removeCollectedID = {removeCollectedID}
-                searchTerm = {searchTerm}
-            />
-            {/* <TrackerView trackedIDList = {trackedIDList}/>   */}
+            {currentView === 'search' 
+                ?
+                    <SearchView 
+                        trackedIDList = {trackedIDList}
+                        addTrackedID = {addTrackedID}
+                        removeTrackedID = {removeTrackedID}
+                        collectedIDList = {collectedIDList}
+                        addCollectedID = {addCollectedID}
+                        removeCollectedID = {removeCollectedID}
+                        searchTerm = {searchTerm}
+                        serveViewCallBack = {handleChangeView}
+                    />
+                :
+                    <TrackerView 
+                        trackedIDList = {trackedIDList}
+                        addTrackedID = {addTrackedID}
+                        removeTrackedID = {removeTrackedID}
+                        collectedIDList = {collectedIDList}
+                        addCollectedID = {addCollectedID}
+                        removeCollectedID = {removeCollectedID}
+                        serveViewCallBack = {handleChangeView}
+                    />
+            }
         </div>
     );
 }
