@@ -3,9 +3,8 @@
     width: auto;
     display: flex;
     flex-direction: row;
-    text-align: center;
+    text-align: left;
     align-items: center;
-    justify-content: space-between;
     padding: 1rem;
     transition: 0.3s;
     
@@ -20,7 +19,8 @@
     letter-spacing: 1px;
     font-size: clamp(0.8em, 2vw, 1em);
     text-align: center;
-    display: block;
+    display: flex;
+    padding-left: 1vw;
     width: 20vw;
     text-shadow: 0 0.2em 5px black;
 }
@@ -40,10 +40,10 @@
 .tracker-button {
     display: inline-block;
     align-self: center;
-    width: 1vw;
+    width: 1.25vw;
     transition: 0.3s;
     opacity: 0.2;
-    padding: 10px;
+    padding: 0.5vh;
 }
 
 .-button:hover {

@@ -28,6 +28,7 @@ function TrackedItemTile(props) {
                 <img className="tracker-button" id="track-button" src={props.serveTrackedIcon(props.id)} onClick={handleTrackItem} alt="+"></img>
                 <img className="tracker-button" id="collected-button" src={props.serveCollectedIcon(props.id)} onClick={handleCollectItem} alt="c"></img>
             </div>
+            
         </div>
     );
 } 

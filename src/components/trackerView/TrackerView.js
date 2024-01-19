@@ -9,7 +9,7 @@ import TrackIcon from '../../assets/icons/trackButton.svg';
 import UntrackIcon from '../../assets/icons/untrackButton.svg';
 import CollectIcon from '../../assets/icons/collectButton.svg';
 import UncollectIcon from '../../assets/icons/uncollectButton.svg';
-
+import SearchViewIcon from '../../assets/icons/search-view.svg'
 
 function TrackerView(props) {
 
@@ -34,6 +34,9 @@ function TrackerView(props) {
     }
 
     const serveDetailedItemList = () => {
+        if(props.trackedIDList.length === 0){
+            return <div className="empty-tracking-view-message">TRACK ITEMS TO BEGIN</div>
+        }
         const DetailedItemList = Database.filter((item) => props.trackedIDList.includes(item.id)).map((item) =>{
             return <DetailedItemTile
                 key = {item.id}
@@ -57,11 +60,11 @@ function TrackerView(props) {
 
     return(
         <div className="tracker-view-wrapper">
+            <div className="search-view-button">
+                <img className="search-view-button-img"src = {SearchViewIcon} onClick={handleChangeView}/>
+            </div>
             <div className="detailed-item-list">
                 {serveDetailedItemList()}
-            </div>
-            <div className="search-view-button" onClick={handleChangeView}>
-                <a>View Search</a>
             </div>
         </div>
     )

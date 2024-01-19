@@ -1,19 +1,11 @@
 .search-view-wrapper{
     display: flex;
-    //flex-grow: 1;
 }
 
 .tracking-view-button {
-    cursor: pointer;
     display: flex;
-    text-align: center;
-    justify-content: center;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background-color: rgba(0, 0, 0, 0.2);
-    margin: 0 0.75vw;
-    width: fit-content;
-    padding: 1vh 5vw;
-    align-self: center;
+    justify-content: flex-start;
+    padding-left: 1vw;
 }
 
 .item-list {
@@ -28,11 +20,22 @@
     gap: 1.5vh;
   }
 
+
+.search-view-tracked-wrapper{
+    margin-top: 2.75vh;
+}
+
 .track-list{
     overflow-y: scroll;
-    margin-top: 2.75vh;
-    height: 87.25vh;
+    height: 81vh;
     width: fit-content;
     display: flex;
     flex-direction: column;
+    margin-right: 0.75vw;
+}
+
+.tracking-view-button-img{
+    width: 2vw;
+    padding: 1vh 0.25vw;
+    cursor: pointer;
 }

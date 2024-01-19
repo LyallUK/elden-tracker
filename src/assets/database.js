@@ -49,7 +49,7 @@ export const database = [
         "image": "https://eldenring.wiki.fextralife.com//file/Elden-Ring/aspect_crucible_horns.png",
         "category": "Incantations",
         "location": [
-            "Dropped by Crucible Knight found in Stormveil Castle directly below the Ramparts. Once you reach the walkway where the three Bladed Talon Eagles are located, head to the first left turn you see. It should be a dead end. Once you reach this dead end jump down, and keep heading down until you find a collapsible cliff. The Crucible Knight should be waiting for you by a ruined archway.  Video Location",
+            "Dropped by Crucible Knight found in Stormveil Castle directly below the Ramparts. Once you reach the walkway where the three Bladed Talon Eagles are located, head to the first left turn you see. It should be a dead end. Once you reach this dead end jump down, and keep heading down until you find a collapsible cliff. The Crucible Knight should be waiting for you by a ruined archway.",
             "For players having difficulty defeating the Crucible Knight, there is a way to cheese him by using the elevator in the building behind the archway he comes from. Wait for the knight to pass by and sneak behind him towards the elevator. Step on the pressure plate and then quickly hop off. Go back to the knight and lure him towards the elevator. Walk around the shaft opening until he falls in."
         ],
         "tracked": false,

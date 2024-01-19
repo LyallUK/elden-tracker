@@ -10,6 +10,7 @@ import TrackIcon from '../../assets/icons/trackButton.svg';
 import UntrackIcon from '../../assets/icons/untrackButton.svg';
 import CollectIcon from '../../assets/icons/collectButton.svg';
 import UncollectIcon from '../../assets/icons/uncollectButton.svg';
+import TrackerViewIcon from '../../assets/icons/tracker-view.svg';
 
 function SearchView(props){
 
@@ -83,24 +84,25 @@ function SearchView(props){
     
     return(
         <div className="search-view-wrapper">
-            <div className="item-list">
-                {serveItemList()}
-            </div>
             <div className="search-view-tracked-wrapper">
+                {
+                props.trackedIDList.length > 0 
+                    ?
+                        <div className="tracking-view-button">
+                            <img className="tracking-view-button-img" src = {TrackerViewIcon} onClick={handleChangeView}/>
+                        </div>
+                    : 
+                        ''
+                }
                 <div className="track-list">
-                    {
-                    !!props.trackedIDList.length > 0 
-                        ?
-                            <div className="tracking-view-button" onClick={handleChangeView}>
-                                <a>View Tracking</a>
-                            </div>
-                        : 
-                            ''
-                    }
+                    
                     <div>
                         {serveTrackedItemList()}
                     </div>
                 </div>
+            </div>
+            <div className="item-list">
+                {serveItemList()}
             </div>
         </div>
     )
