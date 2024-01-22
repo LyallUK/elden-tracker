@@ -5,107 +5,89 @@ import ItemTile from "../itemTile/ItemTile.js";
 import TrackedItemTile from "../trackedItemTile/TrackedItemTile.js";
 
 //Asset Imports
-import {database as Database} from '../../assets/database.js';
-import TrackIcon from '../../assets/icons/trackButton.svg';
-import UntrackIcon from '../../assets/icons/untrackButton.svg';
-import CollectIcon from '../../assets/icons/collectButton.svg';
-import UncollectIcon from '../../assets/icons/uncollectButton.svg';
-import TrackerViewIcon from '../../assets/icons/tracker-view.svg';
+import { database as Database } from "../../assets/database.js";
 
-function SearchView(props){
+import TrackerViewIcon from "../../assets/icons/tracker-view.svg";
 
-    const idIsTracked = (itemID) => {
-        return props.trackedIDList.includes(itemID);
-    }
+function SearchView({
+  searchTerm,
+  trackedIDList,
+  onViewChange,
+  onTrackToggle,
+  onCollectToggle,
+  serveTrackedIcon,
+  serveCollectedIcon
+}) {
 
-    const idIsCollected = (itemID) => {
-        return props.collectedIDList.includes(itemID);
-    }
+  const handleChangeView = () => {
+    onViewChange("track");
+  };
 
-    const serveTrackedIcon = (itemID) => {
-        return idIsTracked(itemID) ? UntrackIcon : TrackIcon;
-    }
+  //serve entire db as list of ItemTile components
+  const serveItemList = () => {
+    const itemList = Database.map((item) => {
+      return (
+        <ItemTile
+          key={item.id}
+          id={item.id}
+          itemName={item.name}
+          itemImage={item.image}
+          serveTrackedIcon={serveTrackedIcon}
+          serveCollectedIcon={serveCollectedIcon}
+          onTrackToggle={onTrackToggle}
+          onCollectToggle={onCollectToggle}
+        />
+      );
+    });
 
-    const serveCollectedIcon = (itemID) => {
-        return idIsCollected(itemID) ? UncollectIcon : CollectIcon;
-    }
+    return itemList.filter((item) =>
+      item.props.itemName.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  };
 
-    const handleChangeView = () => {
-        props.serveViewCallBack('track');
-    }
 
-    //serve entire db as list of ItemTile components
-    const serveItemList = () => {
-        const itemList = Database.map((item) =>{
-            return <ItemTile
-                key = {item.id}
-                id = {item.id}
-                itemName = {item.name}
-                itemImage = {item.image}
-                itemCategory = {item.category}
-                itemLocation = {item.location}
-                trackedIDList = {props.trackedIDList}
-                addTrackedID = {props.addTrackedID}
-                removeTrackedID = {props.removeTrackedID}
-                collectedIDList = {props.collectedIDList}
-                addCollectedID = {props.addCollectedID}
-                removeCollectedID = {props.removeCollectedID}
-                serveTrackedIcon = {serveTrackedIcon}
-                serveCollectedIcon = {serveCollectedIcon}
+  //serve trackedItemTile list of items where item ids match trackedIDList
+  const serveTrackedItemList = () => {
+    const trackedItemList = Database.filter((item) =>
+      trackedIDList.includes(item.id)
+    ).map((item) => {
+      return (
+        <TrackedItemTile
+          key={item.id}
+          id={item.id}
+          itemName={item.name}
+          itemImage={item.image}
+          serveTrackedIcon={serveTrackedIcon}
+          serveCollectedIcon={serveCollectedIcon}
+          onTrackToggle={onTrackToggle}
+          onCollectToggle={onCollectToggle}
+        />
+      );
+    });
+    return trackedItemList;
+  };
+
+  return (
+    <div className="search-view-wrapper">
+      <div className="search-view-tracked-wrapper">
+        {trackedIDList.length > 0 ? (
+          <div className="tracking-view-button">
+            <img
+              className="tracking-view-button-img"
+              src={TrackerViewIcon}
+              onClick={handleChangeView}
             />
-        })
-
-        const filteredItemList = itemList.filter((item) => item.props.itemName.toLowerCase().includes(props.searchTerm.toLowerCase()));
-        return filteredItemList;
-    }
-    
-    //serve trackedItemTile list of items where item ids match trackedIDList
-    const serveTrackedItemList = () => {
-        const trackedItemList = Database.filter((item) => props.trackedIDList.includes(item.id)).map((item) =>{
-            return <TrackedItemTile
-                key = {item.id}
-                id = {item.id}
-                itemName = {item.name}
-                itemImage = {item.image}
-                itemCategory = {item.category}
-                itemLocation = {item.location}
-                trackedIDList = {props.trackedIDList}
-                addTrackedID = {props.addTrackedID}
-                removeTrackedID = {props.removeTrackedID}
-                collectedIDList = {props.collectedIDList}
-                addCollectedID = {props.addCollectedID}
-                removeCollectedID = {props.removeCollectedID}
-                serveTrackedIcon = {serveTrackedIcon}
-                serveCollectedIcon = {serveCollectedIcon}
-            />
-        })
-        return trackedItemList;
-    }
-    
-    return(
-        <div className="search-view-wrapper">
-            <div className="search-view-tracked-wrapper">
-                {
-                props.trackedIDList.length > 0 
-                    ?
-                        <div className="tracking-view-button">
-                            <img className="tracking-view-button-img" src = {TrackerViewIcon} onClick={handleChangeView}/>
-                        </div>
-                    : 
-                        ''
-                }
-                <div className="track-list">
-                    
-                    <div>
-                        {serveTrackedItemList()}
-                    </div>
-                </div>
-            </div>
-            <div className="item-list">
-                {serveItemList()}
-            </div>
+          </div>
+        ) : (
+          ""
+        )}
+        <div className="track-list">
+          <div>{serveTrackedItemList()}</div>
         </div>
-    )
+      </div>
+      <div className="item-list">{serveItemList()}</div>
+    </div>
+  );
 }
 
 export default SearchView;

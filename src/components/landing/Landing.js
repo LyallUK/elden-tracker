@@ -1,84 +1,96 @@
 import React, { useState } from "react";
 
 //Asset Imports
-import {database as Database} from '../../assets/database.js';
+import { database as Database } from "../../assets/database.js";
+import TrackIcon from "../../assets/icons/trackButton.svg";
+import UntrackIcon from "../../assets/icons/untrackButton.svg";
+import CollectIcon from "../../assets/icons/collectButton.svg";
+import UncollectIcon from "../../assets/icons/uncollectButton.svg";
 
 //component imports
-import Header from '../header/Header';
-import SearchView from '../searchView/SearchView';
-import TrackerView from '../trackerView/TrackerView';
+import Header from "../header/Header";
+import SearchView from "../searchView/SearchView";
+import TrackerView from "../trackerView/TrackerView";
 
 function Landing() {
-    //component states
-    const [trackedIDList, setTrackedIDList] = useState([]);
-    const [collectedIDList, setCollectedIDList] = useState([]);
-    const [searchTerm, setSearchTerm] = useState('');
-    const [currentView, setCurrentView] = useState('search');
+  //component states
+  const [trackedIDList, setTrackedIDList] = useState([]);
+  const [collectedIDList, setCollectedIDList] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [currentView, setCurrentView] = useState("search");
 
-    //add an ID to state: trackedIDList
-    const addTrackedID = (itemID) => {
-        setTrackedIDList([... trackedIDList, itemID]);
+  const handleTrackItem = (itemID) => {
+    if (trackedIDList.includes(itemID)) {
+      setTrackedIDList(
+        trackedIDList.filter((trackedID) => trackedID != itemID)
+      );
+    } else {
+      setTrackedIDList([...trackedIDList, itemID]);
     }
+  };
 
-    //remove an ID to state: trackedIDList
-    const removeTrackedID = (itemID) => {
-        setTrackedIDList(trackedIDList.filter((trackedID) => trackedID != itemID));
+  const handleCollectItem = (itemID) => {
+    if (collectedIDList.includes(itemID)) {
+      setCollectedIDList(
+        collectedIDList.filter((collectedID) => collectedID != itemID)
+      );
+    } else {
+      setCollectedIDList([...collectedIDList, itemID]);
     }
+  };
 
-    //add an ID to state: collectedIDList
-    const addCollectedID = (itemID) => {
-        setCollectedIDList([... collectedIDList, itemID]);
-    }
+  //handler function for search term - callback function found in Header component
+  const handleSearchBar = (searchTerm) => {
+    setSearchTerm(searchTerm);
+  };
 
-    //remove an ID to state: collectedIDList
-    const removeCollectedID = (itemID) => {
-        setCollectedIDList(collectedIDList.filter((collectedID) => collectedID != itemID));
-    }
+  const handleChangeView = (nextView) => {
+    setCurrentView(nextView);
+  };
 
-    //handler function for search term - callback function found in Header component
-    const handleSearchBar = (searchTerm) => {
-        setSearchTerm(searchTerm);
-    }
+  const idIsTracked = (itemID) => {
+    return trackedIDList.includes(itemID);
+  };
 
-    const handleChangeView = (nextView) => {
-        setCurrentView(nextView);
-    }
+  const idIsCollected = (itemID) => {
+    return collectedIDList.includes(itemID);
+  };
 
-    //
-    const updateDatabase = (updatedDB) => {
-    }
+  const serveTrackedIcon = (itemID) => {
+    return idIsTracked(itemID) ? UntrackIcon : TrackIcon;
+  };
 
+  const serveCollectedIcon = (itemID) => {
+    return idIsCollected(itemID) ? UncollectIcon : CollectIcon;
+  };
 
-    return (
-        <div className="landing">
-            <Header 
-                searchTermCallBack = {handleSearchBar}
-            />
-            {currentView === 'search' 
-                ?
-                    <SearchView 
-                        trackedIDList = {trackedIDList}
-                        addTrackedID = {addTrackedID}
-                        removeTrackedID = {removeTrackedID}
-                        collectedIDList = {collectedIDList}
-                        addCollectedID = {addCollectedID}
-                        removeCollectedID = {removeCollectedID}
-                        searchTerm = {searchTerm}
-                        serveViewCallBack = {handleChangeView}
-                    />
-                :
-                    <TrackerView 
-                        trackedIDList = {trackedIDList}
-                        addTrackedID = {addTrackedID}
-                        removeTrackedID = {removeTrackedID}
-                        collectedIDList = {collectedIDList}
-                        addCollectedID = {addCollectedID}
-                        removeCollectedID = {removeCollectedID}
-                        serveViewCallBack = {handleChangeView}
-                    />
-            }
-        </div>
-    );
+  const updateDatabase = (updatedDB) => {};
+
+  return (
+    <div className="landing">
+      <Header searchTermCallBack={handleSearchBar} />
+      {currentView === "search" ? (
+        <SearchView
+          searchTerm={searchTerm}
+          trackedIDList={trackedIDList}
+          onViewChange={handleChangeView}
+          onTrackToggle={handleTrackItem}
+          onCollectToggle={handleCollectItem}
+          serveTrackedIcon={serveTrackedIcon}
+          serveCollectedIcon={serveCollectedIcon}
+        />
+      ) : (
+        <TrackerView
+          trackedIDList={trackedIDList}
+          onViewChange={handleChangeView}
+          onTrackToggle={handleTrackItem}
+          onCollectToggle={handleCollectItem}
+          serveTrackedIcon={serveTrackedIcon}
+          serveCollectedIcon={serveCollectedIcon}
+        />
+      )}
+    </div>
+  );
 }
 
 export default Landing;

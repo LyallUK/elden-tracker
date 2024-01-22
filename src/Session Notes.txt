@@ -1,5 +1,5 @@
 DONE:
-- Styling updates to search view and tracking view
+- Moved functions to parent components where possible to remove repeated code
 
 
 TO DO:
