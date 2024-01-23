@@ -7,10 +7,22 @@ import SearchFilter from '../../assets/icons/filterButton.svg';
 import GithubIcon from '../../assets/icons/githubLogo.svg';
 import HelpIcon from '../../assets/icons/helpButton.svg';
 
- function Header(props) {
+ function Header({
+    searchTermCallBack,
+    toggleHelpModal,
+    toggleFilterModal
+}) {
 
     const handleSearchBar = (e) => {
-        props.searchTermCallBack(e.target.value);
+        searchTermCallBack(e.target.value);
+    }
+
+    const handleToggleHelpModal = () => {
+        toggleHelpModal();
+    }
+
+    const handleToggleFilterModal = () => {
+        toggleFilterModal();
     }
 
     return (
@@ -19,14 +31,13 @@ import HelpIcon from '../../assets/icons/helpButton.svg';
                 <img className="game-logo" src={GameLogo} alt="Game Logo"></img>
                 <div className="link-container">
                     <a href="https://github.com/LyallUK/elden-tracker" target="_blank">
-                        <img className="github-logo info-icon" src={GithubIcon} alt="Github"></img>
+                        <img className="github-logo info-icon" src={GithubIcon} alt="Github" />
                     </a>
-                    
-                    <img className="help-logo info-icon" src={HelpIcon} alt="?"></img>
+                    <img className="help-logo info-icon" src={HelpIcon} alt="?" onClick={handleToggleHelpModal}/>
                 </div> 
             </div>
             <div className="search-container">
-                <img className="info-icon" src={SearchFilter} alt="Filter Symbol"></img>
+                <img className="info-icon" src={SearchFilter} alt="Filter Symbol" onClick={handleToggleFilterModal}/>
                 <input className="search-bar" type="text" spellCheck="false" placeholder="SEARCH..." onChange={handleSearchBar}></input>
             </div>
         </div>

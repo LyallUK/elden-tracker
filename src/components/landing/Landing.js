@@ -9,6 +9,7 @@ import UncollectIcon from "../../assets/icons/uncollectButton.svg";
 
 //component imports
 import Header from "../header/Header";
+import Modal from "../modal/Modal.js";
 import SearchView from "../searchView/SearchView";
 import TrackerView from "../trackerView/TrackerView";
 
@@ -18,6 +19,18 @@ function Landing() {
   const [collectedIDList, setCollectedIDList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentView, setCurrentView] = useState("search");
+  const [helpModalIsToggled, setHelpModal] = useState(false);
+  const [filterModalIsToggled, setFilterModal] = useState(false);
+
+  const toggleHelpModal = () => {
+    helpModalIsToggled ? setHelpModal(false) : setHelpModal(true);
+    setFilterModal(false);
+  }
+
+  const toggleFilterModal = () => {
+    filterModalIsToggled ? setFilterModal(false) : setFilterModal(true);
+    setHelpModal(false);
+  }
 
   const handleTrackItem = (itemID) => {
     if (trackedIDList.includes(itemID)) {
@@ -64,11 +77,17 @@ function Landing() {
     return idIsCollected(itemID) ? UncollectIcon : CollectIcon;
   };
 
-  const updateDatabase = (updatedDB) => {};
+  const updateDatabase = (updatedDB) => { };
 
   return (
     <div className="landing">
-      <Header searchTermCallBack={handleSearchBar} />
+      <Header
+        searchTermCallBack={handleSearchBar}
+        toggleHelpModal={toggleHelpModal}
+        toggleFilterModal={toggleFilterModal}
+      />
+      {helpModalIsToggled === true ? <Modal type={"help"}/> : <div></div>}
+      {filterModalIsToggled === true ? <Modal type={"filter"}/> : <div></div>}
       {currentView === "search" ? (
         <SearchView
           searchTerm={searchTerm}
