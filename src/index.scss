@@ -5,14 +5,16 @@
 @import './components//trackerView/TrackerView.scss';
 @import './components/itemTile/ItemTile.scss';
 @import './components/trackedItemTile/TrackedItemTile.scss';
-@import './components/searchFilter/SearchFilter.scss';
 @import './components/detailedTrackedItemTile/DetailedItemTile.scss';
+@import './components/modal/Modal.scss';
+
+// *{box-sizing: border-box;}
 
 body {
   height: 100vh;
   user-select: none;
   overflow: hidden;
-  background-color: rgb(37, 37, 37);
+  background-color: rgb(20, 20, 20);
   color: rgb(190, 190, 190);
   text-transform: uppercase;
   font-family: 'Times New Roman', Times, serif;

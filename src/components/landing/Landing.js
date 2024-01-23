@@ -14,102 +14,98 @@ import SearchView from "../searchView/SearchView";
 import TrackerView from "../trackerView/TrackerView";
 
 function Landing() {
-  //component states
-  const [trackedIDList, setTrackedIDList] = useState([]);
-  const [collectedIDList, setCollectedIDList] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [currentView, setCurrentView] = useState("search");
-  const [helpModalIsToggled, setHelpModal] = useState(false);
-  const [filterModalIsToggled, setFilterModal] = useState(false);
+    //component states
+    const [trackedIDList, setTrackedIDList] = useState([]);
+    const [collectedIDList, setCollectedIDList] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [currentView, setCurrentView] = useState("search");
+    const [helpModalIsToggled, setHelpModal] = useState(false);
+    const [filterModalIsToggled, setFilterModal] = useState(false);
 
-  const toggleHelpModal = () => {
-    helpModalIsToggled ? setHelpModal(false) : setHelpModal(true);
-    setFilterModal(false);
-  }
+    const toggleHelpModal = () => {
+        helpModalIsToggled ? setHelpModal(false) : setHelpModal(true);
+        setFilterModal(false);
+    };
 
-  const toggleFilterModal = () => {
-    filterModalIsToggled ? setFilterModal(false) : setFilterModal(true);
-    setHelpModal(false);
-  }
+    const toggleFilterModal = () => {
+        filterModalIsToggled ? setFilterModal(false) : setFilterModal(true);
+        setHelpModal(false);
+    };
 
-  const handleTrackItem = (itemID) => {
-    if (trackedIDList.includes(itemID)) {
-      setTrackedIDList(
-        trackedIDList.filter((trackedID) => trackedID != itemID)
-      );
-    } else {
-      setTrackedIDList([...trackedIDList, itemID]);
-    }
-  };
+    const handleTrackItem = (itemID) => {
+        if (trackedIDList.includes(itemID)) {
+            setTrackedIDList(trackedIDList.filter((trackedID) => trackedID != itemID));
+        } else {
+            setTrackedIDList([...trackedIDList, itemID]);
+        }
+    };
 
-  const handleCollectItem = (itemID) => {
-    if (collectedIDList.includes(itemID)) {
-      setCollectedIDList(
-        collectedIDList.filter((collectedID) => collectedID != itemID)
-      );
-    } else {
-      setCollectedIDList([...collectedIDList, itemID]);
-    }
-  };
+    const handleCollectItem = (itemID) => {
+        if (collectedIDList.includes(itemID)) {
+            setCollectedIDList(collectedIDList.filter((collectedID) => collectedID != itemID));
+        } else {
+            setCollectedIDList([...collectedIDList, itemID]);
+        }
+    };
 
-  //handler function for search term - callback function found in Header component
-  const handleSearchBar = (searchTerm) => {
-    setSearchTerm(searchTerm);
-  };
+    //handler function for search term - callback function found in Header component
+    const handleSearchBar = (searchTerm) => {
+        setSearchTerm(searchTerm);
+    };
 
-  const handleChangeView = (nextView) => {
-    setCurrentView(nextView);
-  };
+    const handleChangeView = (nextView) => {
+        setCurrentView(nextView);
+    };
 
-  const idIsTracked = (itemID) => {
-    return trackedIDList.includes(itemID);
-  };
+    const idIsTracked = (itemID) => {
+        return trackedIDList.includes(itemID);
+    };
 
-  const idIsCollected = (itemID) => {
-    return collectedIDList.includes(itemID);
-  };
+    const idIsCollected = (itemID) => {
+        return collectedIDList.includes(itemID);
+    };
 
-  const serveTrackedIcon = (itemID) => {
-    return idIsTracked(itemID) ? UntrackIcon : TrackIcon;
-  };
+    const serveTrackedIcon = (itemID) => {
+        return idIsTracked(itemID) ? UntrackIcon : TrackIcon;
+    };
 
-  const serveCollectedIcon = (itemID) => {
-    return idIsCollected(itemID) ? UncollectIcon : CollectIcon;
-  };
+    const serveCollectedIcon = (itemID) => {
+        return idIsCollected(itemID) ? UncollectIcon : CollectIcon;
+    };
 
-  const updateDatabase = (updatedDB) => { };
+    const updateDatabase = (updatedDB) => {};
 
-  return (
-    <div className="landing">
-      <Header
-        searchTermCallBack={handleSearchBar}
-        toggleHelpModal={toggleHelpModal}
-        toggleFilterModal={toggleFilterModal}
-      />
-      {helpModalIsToggled === true ? <Modal type={"help"}/> : <div></div>}
-      {filterModalIsToggled === true ? <Modal type={"filter"}/> : <div></div>}
-      {currentView === "search" ? (
-        <SearchView
-          searchTerm={searchTerm}
-          trackedIDList={trackedIDList}
-          onViewChange={handleChangeView}
-          onTrackToggle={handleTrackItem}
-          onCollectToggle={handleCollectItem}
-          serveTrackedIcon={serveTrackedIcon}
-          serveCollectedIcon={serveCollectedIcon}
-        />
-      ) : (
-        <TrackerView
-          trackedIDList={trackedIDList}
-          onViewChange={handleChangeView}
-          onTrackToggle={handleTrackItem}
-          onCollectToggle={handleCollectItem}
-          serveTrackedIcon={serveTrackedIcon}
-          serveCollectedIcon={serveCollectedIcon}
-        />
-      )}
-    </div>
-  );
+    return (
+        <div className="landing">
+            <Header
+                searchTermCallBack={handleSearchBar}
+                toggleHelpModal={toggleHelpModal}
+                toggleFilterModal={toggleFilterModal}
+            />
+            {helpModalIsToggled === true ? <Modal type={"help"} /> : ""}
+            {filterModalIsToggled === true ? <Modal type={"filter"} /> : ""}
+            {currentView === "search" ? (
+                <SearchView
+                    searchTerm={searchTerm}
+                    trackedIDList={trackedIDList}
+                    onViewChange={handleChangeView}
+                    onTrackToggle={handleTrackItem}
+                    onCollectToggle={handleCollectItem}
+                    serveTrackedIcon={serveTrackedIcon}
+                    serveCollectedIcon={serveCollectedIcon}
+                />
+            ) : (
+                <TrackerView
+                    trackedIDList={trackedIDList}
+                    onViewChange={handleChangeView}
+                    onTrackToggle={handleTrackItem}
+                    onCollectToggle={handleCollectItem}
+                    serveTrackedIcon={serveTrackedIcon}
+                    serveCollectedIcon={serveCollectedIcon}
+                />
+            )}
+        </div>
+    );
 }
 
 export default Landing;

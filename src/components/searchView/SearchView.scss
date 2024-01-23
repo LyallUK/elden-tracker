@@ -5,7 +5,7 @@
 .tracking-view-button {
     display: flex;
     justify-content: flex-start;
-    padding-left: 1vw;
+    margin-bottom: 1vh;
 }
 
 .item-list {
@@ -36,6 +36,5 @@
 
 .tracking-view-button-img{
     width: 2vw;
-    padding: 1vh 0.25vw;
     cursor: pointer;
 }
