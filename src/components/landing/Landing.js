@@ -95,6 +95,7 @@ function Landing() {
                     <Modal 
                         type={"filter"}
                         updateFilterOptions={updateFilterOptions}
+                        filterOptions={filterOptions}
                     /> 
                 : 
                     ""

@@ -1,18 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 
-import ArrowUp from "../../assets/icons/arrow-up.svg";
-import ArrowDown from "../../assets/icons/arrow-down.svg";
+import Collapse from "../../assets/icons/arrow-up.svg";
+import Uncollapse from "../../assets/icons/arrow-down.svg";
 
 function Modal({ 
     type,
-    updateFilterOptions
+    updateFilterOptions,
+    filterOptions
 }) {
+    const [collapsedCategories, toggleCollapsed] = useState([]);
 
-    const handleFilterUpdate = (option) => {
-        updateFilterOptions(option);
+    const updateCollapsed = (category) => {
+        collapsedCategories.includes(category) ? toggleCollapsed(collapsedCategories.filter((term) => term != category)) : toggleCollapsed([...collapsedCategories, category]);
     }
 
-    const filterList = {
+    const handleFilterUpdate = (type) => {
+        updateFilterOptions(type)
+    }
+
+    const serveCollapseImages = (category) => {
+        return collapsedCategories.includes(category) ? Uncollapse : Collapse;
+    }
+
+    const typeList = {
         weapons: [
             "axes",
             "ballista",
@@ -46,25 +56,12 @@ function Modal({
             "whips",
         ],
         equipment: ["head", "chest", "arms", "legs", "Talismans"],
-        spells: ["sorceries", "incantations"],
-    };
-
-    // const toggleCollapse = () => {
-    //     let isToggled = false;
-
-    //     const collapseImage = document.getElementsByClassName("filterCollapse");
-    //     const collapseDiv = document.getElementsByClassName("filterGroup");
-
-    //     if (isToggled) {
-    //         collapseDiv.style.height = "fit-content";
-    //         collapseImage.src = ArrowUp;
-    //         isToggled = !isToggled;
-    //     } else {
-    //         collapseDiv.style.height = "0";
-    //         collapseImage.src = ArrowDown;
-    //         isToggled = !isToggled;
-    //     }
-    // };
+        spells: ["sorceries", "incantations"]
+    }; 
+ 
+    const serveCategory = (category) => {
+        return collapsedCategories.includes(category) ? [] : typeList[category];
+    }
 
     return (
         <div className="modal-wrapper">
@@ -111,27 +108,31 @@ function Modal({
                 </div>
             ) : (
                 <div className="filter-modal-wrapper">
-                    <div className="searchFilter">
-                        {Object.keys(filterList).map((category, index) => (
-                            <div key={index}>
-                                <div>
-                                    <span className="filterTitle">{category}</span>
-                                    <img
-                                        className="filterCollapse"
-                                        alt="collapse"
-                                        // onClick={() => toggleCollapse()}
-                                    ></img>
-                                </div>
-                                <div className="filterGroup">
-                                    {filterList[category].map((item, itemIndex) => (
-                                        <span className="filterType" key={itemIndex} onClick={() => handleFilterUpdate(item)}>
-                                            {item}
-                                        </span>
-                                    ))}
-                                </div>
+                    {Object.keys(typeList).map((category) => (
+                        <div className="filter-category-wrapper">
+                            <div className="filter-header-wrapper" onClick={() => updateCollapsed(category)}>
+                                <span className="filter-title" >{category}</span>
+                                <img
+                                    src={serveCollapseImages(category)}
+                                    className="filter-collapse"
+                                    alt="collapse"
+                                /> 
                             </div>
-                        ))}
-                    </div>
+                            <div className="filter-group">
+                                {serveCategory(category).map((type) => (
+                                    filterOptions.includes(type) 
+                                    ? 
+                                    <span className="filter-type" onClick={() => handleFilterUpdate(type)}>
+                                        <s>{type}</s>
+                                    </span>
+                                    :
+                                    <span className="filter-type" onClick={() => handleFilterUpdate(type)}>
+                                        {type}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
                 </div>
             )}
         </div>

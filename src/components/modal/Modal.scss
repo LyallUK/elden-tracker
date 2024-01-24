@@ -60,21 +60,26 @@ $transition-speed: 0.5s;
     font-weight: bold;
 }
 
-.searchFilter{
+.filter-modal-wrapper{
     background-color: rgb(15, 15, 15);
+    width: $model-width;
     height: 100%;
     position: absolute;
     right: 1.45vw;
     overflow-y: scroll;
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     flex-direction: column;
-    gap: 10%;
+    // gap: 10%;
     padding: 1vw;
     animation: slide-in $transition-speed;
 }
 
-.filterTitle {
+.filter-header-wrapper{
+    width: fit-content;
+}
+
+.filter-title {
     display: inline-block;
     padding: 5px;
     margin-bottom: 20px;
@@ -82,19 +87,19 @@ $transition-speed: 0.5s;
     color: #a18b5f;
 }
 
-.filterCollapse{
-    height: 10px;
+.filter-collapse{
+    height: 1.3vh;
     justify-content: center;
     align-items: center;
 }
 
-.filterGroup {
+.filter-group {
     columns: 2;
     transition: $transition-speed;
     overflow: hidden;
 }
 
-.filterType {
+.filter-type {
     width: 50%;
     display: block;
     font-size: smaller;
@@ -103,7 +108,7 @@ $transition-speed: 0.5s;
     white-space: nowrap;
 }
 
-.filterType:hover {
+.filter-type:hover {
     color: white;
     transition: $transition-speed;
 }
