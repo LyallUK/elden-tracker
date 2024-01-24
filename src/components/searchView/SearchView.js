@@ -17,6 +17,7 @@ function SearchView({
     onCollectToggle,
     serveTrackedIcon,
     serveCollectedIcon,
+    filterOptions
 }) {
     const handleChangeView = () => {
         onViewChange("track");
@@ -31,6 +32,7 @@ function SearchView({
                     id={item.id}
                     itemName={item.name}
                     itemImage={item.image}
+                    itemCategory={item.category}
                     serveTrackedIcon={serveTrackedIcon}
                     serveCollectedIcon={serveCollectedIcon}
                     onTrackToggle={onTrackToggle}
@@ -39,7 +41,7 @@ function SearchView({
             );
         });
 
-        return itemList.filter((item) => item.props.itemName.toLowerCase().includes(searchTerm.toLowerCase()));
+        return filterOptions.length === 0 ? itemList.filter((item) => item.props.itemName.toLowerCase().includes(searchTerm.toLowerCase())) : itemList.filter((item) => item.props.itemName.toLowerCase().includes(searchTerm.toLowerCase()) && filterOptions.includes(item.props.itemCategory.toLowerCase()))
     };
 
     //serve trackedItemTile list of items where item ids match trackedIDList

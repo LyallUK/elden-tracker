@@ -1,6 +1,8 @@
 DONE:
-- Moved functions to parent components where possible to remove repeated code
-
+- filter items displayed by filter options
 
 TO DO:
+- Show options as selected
+- Make search filter sections collapsible
+
 - Create write to database functions

@@ -21,6 +21,13 @@ function Landing() {
     const [currentView, setCurrentView] = useState("search");
     const [helpModalIsToggled, setHelpModal] = useState(false);
     const [filterModalIsToggled, setFilterModal] = useState(false);
+    const [filterOptions, setFilterOptions] = useState([]);
+
+
+    const updateFilterOptions = (option) => {
+        if(filterOptions.length === 0) setFilterOptions(undefined);
+        filterOptions.includes(option) ? setFilterOptions(filterOptions.filter((type) => type != option)) : setFilterOptions([...filterOptions, option]);
+    }
 
     const toggleHelpModal = () => {
         helpModalIsToggled ? setHelpModal(false) : setHelpModal(true);
@@ -83,7 +90,15 @@ function Landing() {
                 toggleFilterModal={toggleFilterModal}
             />
             {helpModalIsToggled === true ? <Modal type={"help"} /> : ""}
-            {filterModalIsToggled === true ? <Modal type={"filter"} /> : ""}
+            {filterModalIsToggled === true 
+                ? 
+                    <Modal 
+                        type={"filter"}
+                        updateFilterOptions={updateFilterOptions}
+                    /> 
+                : 
+                    ""
+            }
             {currentView === "search" ? (
                 <SearchView
                     searchTerm={searchTerm}
@@ -93,6 +108,7 @@ function Landing() {
                     onCollectToggle={handleCollectItem}
                     serveTrackedIcon={serveTrackedIcon}
                     serveCollectedIcon={serveCollectedIcon}
+                    filterOptions={filterOptions}
                 />
             ) : (
                 <TrackerView

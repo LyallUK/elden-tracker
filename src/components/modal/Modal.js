@@ -3,7 +3,15 @@ import React from "react";
 import ArrowUp from "../../assets/icons/arrow-up.svg";
 import ArrowDown from "../../assets/icons/arrow-down.svg";
 
-function Modal({ type }) {
+function Modal({ 
+    type,
+    updateFilterOptions
+}) {
+
+    const handleFilterUpdate = (option) => {
+        updateFilterOptions(option);
+    }
+
     const filterList = {
         weapons: [
             "axes",
@@ -116,7 +124,7 @@ function Modal({ type }) {
                                 </div>
                                 <div className="filterGroup">
                                     {filterList[category].map((item, itemIndex) => (
-                                        <span className="filterType" key={itemIndex}>
+                                        <span className="filterType" key={itemIndex} onClick={() => handleFilterUpdate(item)}>
                                             {item}
                                         </span>
                                     ))}

@@ -1,6 +1,5 @@
 import React from "react";
 
-
 //Asset Imports
 import GameLogo from "../../assets/art/eldenringlogo.svg";
 import SearchFilter from '../../assets/icons/filterButton.svg';
@@ -43,6 +42,5 @@ import HelpIcon from '../../assets/icons/helpButton.svg';
         </div>
     )
 }
-
 
 export default Header;
