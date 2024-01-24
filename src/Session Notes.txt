@@ -1,8 +1,6 @@
 DONE:
-- filter items displayed by filter options
+
 
 TO DO:
-- Show options as selected
-- Make search filter sections collapsible
-
 - Create write to database functions
+- CSS updates

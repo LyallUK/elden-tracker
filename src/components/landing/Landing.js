@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 
 //Asset Imports
 import { database as Database } from "../../assets/database.js";
@@ -15,13 +15,20 @@ import TrackerView from "../trackerView/TrackerView";
 
 function Landing() {
     //component states
-    const [trackedIDList, setTrackedIDList] = useState([]);
-    const [collectedIDList, setCollectedIDList] = useState([]);
+    const [trackedIDList, setTrackedIDList] = useState(JSON.parse(localStorage.getItem('trackedIDs')) || []);
+    const [collectedIDList, setCollectedIDList] = useState(JSON.parse(localStorage.getItem('collectedIDs')) || []);
     const [searchTerm, setSearchTerm] = useState("");
     const [currentView, setCurrentView] = useState("search");
     const [helpModalIsToggled, setHelpModal] = useState(false);
     const [filterModalIsToggled, setFilterModal] = useState(false);
     const [filterOptions, setFilterOptions] = useState([]);
+
+    
+    // Save to local storage on state change.
+    useEffect(()=> {
+        localStorage.setItem('trackedIDs', JSON.stringify(trackedIDList));
+        localStorage.setItem('collectedIDs', JSON.stringify(collectedIDList));
+    }, [trackedIDList , collectedIDList]);
 
 
     const updateFilterOptions = (option) => {
@@ -79,8 +86,6 @@ function Landing() {
     const serveCollectedIcon = (itemID) => {
         return idIsCollected(itemID) ? UncollectIcon : CollectIcon;
     };
-
-    const updateDatabase = (updatedDB) => {};
 
     return (
         <div className="landing">
