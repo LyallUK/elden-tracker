@@ -1,102 +1,103 @@
-$model-width: 30vw;
+$model-width: 35vw;
 $transition-speed: 0.5s;
 
-.modal-wrapper{
-    height: 90vh;
-    width: 100%;
+.modal-wrapper {
+    height: 100vh;
+    width: 100vw;
     z-index: 1;
     position: absolute;
 }
 
-.help-modal-wrapper{
-    background-color: rgb(15, 15, 15);
-    height: 100%;
-    position: absolute;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    flex-wrap: wrap;
-    gap: 10%;
-    animation: slide-in $transition-speed;
-    padding: 0;
-}
-
-.help-content{
-    padding: 2vw;
-}
-
-.help-header{
-    display: block;
-    letter-spacing: 0.3rem;
-    color: #a18b5f;
-    font-size: 1.1vw;
-    padding-bottom: 3vh;
-}
-
-.help-title{
-    display: block;
-    letter-spacing: 0.2rem;
-    color: #a18b5f;
-    font-size: 0.9vw;
-    padding-top: 3vh;
-}
-
-.help-text{
-    width: $model-width;
-    line-height: 1.5;
-    font-size: 0.8vw;
-}
-
-.help-link, .help-link:visited, .help-link:active{
-    text-decoration: none;
-    color: white;
-    font-size: 0.8vw;
-}
-
-.help-link:hover{
-    text-decoration: underline;
-    font-weight: bold;
-}
-
-.filter-modal-wrapper{
+.help-modal-wrapper {
     background-color: rgb(15, 15, 15);
     width: $model-width;
-    height: 100%;
+    height: 90vh;
     position: absolute;
-    right: 1.45vw;
     overflow-y: scroll;
     display: flex;
-    // justify-content: space-between;
     flex-direction: column;
-    // gap: 10%;
     padding: 1vw;
     animation: slide-in $transition-speed;
 }
 
-.filter-header-wrapper{
+.help-content {
+    padding: 2vw;
+    margin-bottom: 1vh;
+}
+
+.help-header {
+    display: block;
+    letter-spacing: 0.3rem;
+    color: #a18b5f;
+    font-size: 1.2vw;
+    padding-bottom: 3vh;
+}
+
+.help-title {
+    display: block;
+    letter-spacing: 0.2rem;
+    color: #a18b5f;
+    font-size: 1.1vw;
+    padding-top: 3vh;
+}
+
+.help-text {
+    width: 25vw;
+    line-height: 1.5;
+    font-size: 1vw;
+}
+
+.help-link,
+.help-link:visited,
+.help-link:active {
+    text-decoration: none;
+    color: white;
+    font-size: 1vw;
+}
+
+.help-link:hover {
+    text-decoration: underline;
+}
+
+.filter-modal-wrapper {
+    background-color: rgb(15, 15, 15);
+    height: 90vh;
+    width: $model-width;
+    position: absolute;
+    right: 1.5vw;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10vh;
+    padding: 1vw;
+    animation: slide-in $transition-speed;
+}
+
+.filter-content {
     width: fit-content;
+}
+
+.filter-header-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .filter-title {
     display: inline-block;
     padding: 5px;
-    margin-bottom: 20px;
     letter-spacing: 5px;
     color: #a18b5f;
 }
 
-.filter-collapse{
-    height: 1.3vh;
-    justify-content: center;
-    align-items: center;
+.filter-collapse {
+    height: 1vw;
 }
 
 .filter-group {
     columns: 2;
     transition: $transition-speed;
-    overflow: hidden;
 }
 
 .filter-type {
@@ -106,6 +107,7 @@ $transition-speed: 0.5s;
     padding-left: 5px;
     padding-bottom: 20px;
     white-space: nowrap;
+    cursor: pointer;
 }
 
 .filter-type:hover {

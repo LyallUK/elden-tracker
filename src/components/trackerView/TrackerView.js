@@ -20,9 +20,9 @@ function TrackerView({
     };
 
     const serveDetailedItemList = () => {
-        if (trackedIDList.length === 0) {
-            return <div className="empty-tracking-view-message">TRACK ITEMS TO BEGIN</div>;
-        }
+        // if (trackedIDList.length === 0) {
+        //     return <div className="empty-tracking-view-message">TRACK ITEMS TO BEGIN</div>;
+        // }
         const DetailedItemList = Database.filter((item) => trackedIDList.includes(item.id)).map((item) => {
             return (
                 <DetailedItemTile

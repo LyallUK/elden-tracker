@@ -3,24 +3,22 @@ import React, { useState } from "react";
 import Collapse from "../../assets/icons/arrow-up.svg";
 import Uncollapse from "../../assets/icons/arrow-down.svg";
 
-function Modal({ 
-    type,
-    updateFilterOptions,
-    filterOptions
-}) {
+function Modal({ type, updateFilterOptions, filterOptions }) {
     const [collapsedCategories, toggleCollapsed] = useState([]);
 
     const updateCollapsed = (category) => {
-        collapsedCategories.includes(category) ? toggleCollapsed(collapsedCategories.filter((term) => term != category)) : toggleCollapsed([...collapsedCategories, category]);
-    }
+        collapsedCategories.includes(category)
+            ? toggleCollapsed(collapsedCategories.filter((term) => term != category))
+            : toggleCollapsed([...collapsedCategories, category]);
+    };
 
     const handleFilterUpdate = (type) => {
-        updateFilterOptions(type)
-    }
+        updateFilterOptions(type);
+    };
 
     const serveCollapseImages = (category) => {
         return collapsedCategories.includes(category) ? Uncollapse : Collapse;
-    }
+    };
 
     const typeList = {
         weapons: [
@@ -56,12 +54,12 @@ function Modal({
             "whips",
         ],
         equipment: ["head", "chest", "arms", "legs", "Talismans"],
-        spells: ["sorceries", "incantations"]
-    }; 
- 
+        spells: ["sorceries", "incantations"],
+    };
+
     const serveCategory = (category) => {
         return collapsedCategories.includes(category) ? [] : typeList[category];
-    }
+    };
 
     return (
         <div className="modal-wrapper">
@@ -109,27 +107,27 @@ function Modal({
             ) : (
                 <div className="filter-modal-wrapper">
                     {Object.keys(typeList).map((category) => (
-                        <div className="filter-category-wrapper">
+                        <div className="filter-content">
                             <div className="filter-header-wrapper" onClick={() => updateCollapsed(category)}>
-                                <span className="filter-title" >{category}</span>
-                                <img
-                                    src={serveCollapseImages(category)}
-                                    className="filter-collapse"
-                                    alt="collapse"
-                                /> 
+                                <span className="filter-title">{category}</span>
+                                <img src={serveCollapseImages(category)} className="filter-collapse" alt="collapse" />
                             </div>
                             <div className="filter-group">
-                                {serveCategory(category).map((type) => (
-                                    filterOptions.includes(type) 
-                                    ? 
-                                    <span className="filter-type" onClick={() => handleFilterUpdate(type)}>
-                                        <s>{type}</s>
-                                    </span>
-                                    :
-                                    <span className="filter-type" onClick={() => handleFilterUpdate(type)}>
-                                        {type}
-                                    </span>
-                                ))}
+                                {serveCategory(category).map((type) =>
+                                    filterOptions.includes(type) ? (
+                                        <span className="filter-type" onClick={() => handleFilterUpdate(type)}>
+                                            <s>{type}</s>
+                                        </span>
+                                    ) : (
+                                        <span
+                                            className="filter-type"
+                                            onClick={() => handleFilterUpdate(type)}
+                                            style={{ color: "rgba(255, 255, 255, 0.2)" }}
+                                        >
+                                            {type}
+                                        </span>
+                                    )
+                                )}
                             </div>
                         </div>
                     ))}

@@ -1,4 +1,4 @@
-.search-view-wrapper{
+.search-view-wrapper {
     display: flex;
 }
 
@@ -9,23 +9,23 @@
 }
 
 .item-list {
+    max-height: 85vh;
+    height: fit-content;
+    width: 100%;
     overflow-y: scroll;
     margin-top: 2.75vh;
-    height: 87.25vh;
     display: flex;
-    width: fit-content;
+    align-items: baseline;
+    justify-content: baseline;
     flex-wrap: wrap;
-    justify-content: start;
-    padding: 0;
     gap: 1.5vh;
-  }
+}
 
-
-.search-view-tracked-wrapper{
+.search-view-tracked-wrapper {
     margin-top: 2.75vh;
 }
 
-.track-list{
+.track-list {
     overflow-y: scroll;
     height: 81vh;
     width: fit-content;
@@ -34,7 +34,7 @@
     margin-right: 0.75vw;
 }
 
-.tracking-view-button-img{
+.tracking-view-button-img {
     width: 2vw;
     cursor: pointer;
 }

@@ -3,14 +3,14 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 1vh 0;
-    height: 5vh;
+    padding: 20px 0;
+    min-height: fit-content;
     border-bottom: rgba(255, 255, 255, 0.1) solid 1px;
 }
 
 .header-info {
     display: flex;
-    align-content: center;
+    justify-content: center;
 }
 
 .game-logo {
@@ -18,20 +18,27 @@
     margin-right: 1em;
 }
 
+.link-container > a {
+    display: inline-block;
+}
+
 .search-container {
     display: flex;
     flex-direction: row;
     align-items: center;
+    height: fit-content;
 }
 
-.info-icon{
+.info-icon {
+    height: 100%;
+    position: relative;
     width: 2.5vh;
     margin-right: 1em;
     transition: 0.3s;
     opacity: 0.2;
     cursor: pointer;
 }
-.info-icon:hover{
+.info-icon:hover {
     transform: scale(1.2);
     opacity: 1;
 }
