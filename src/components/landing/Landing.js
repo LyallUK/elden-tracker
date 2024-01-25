@@ -63,6 +63,7 @@ function Landing() {
             setCollectedIDList(collectedIDList.filter((collectedID) => collectedID != itemID));
         } else {
             setCollectedIDList([...collectedIDList, itemID]);
+            handleTrackItem(itemID);
         }
     };
 
