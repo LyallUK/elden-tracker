@@ -2,8 +2,14 @@ import React, { useState } from "react";
 
 import Collapse from "../../assets/icons/arrow-up.svg";
 import Uncollapse from "../../assets/icons/arrow-down.svg";
+import ClearFilter from "../../assets/icons/clearFilter.png";
 
-function Modal({ type, updateFilterOptions, filterOptions }) {
+function Modal({
+    type,
+    updateFilterOptions,
+    filterOptions,
+    clearFilterOptions
+}) {
     const [collapsedCategories, toggleCollapsed] = useState([]);
 
     const updateCollapsed = (category) => {
@@ -15,6 +21,10 @@ function Modal({ type, updateFilterOptions, filterOptions }) {
     const handleFilterUpdate = (type) => {
         updateFilterOptions(type);
     };
+
+    const handleFilterOptions = () => {
+        clearFilterOptions();
+    }
 
     const serveCollapseImages = (category) => {
         return collapsedCategories.includes(category) ? Uncollapse : Collapse;
@@ -106,6 +116,9 @@ function Modal({ type, updateFilterOptions, filterOptions }) {
                 </div>
             ) : (
                 <div className="filter-modal-wrapper">
+                    <div className="clear-filter-wrapper">
+                        <img classname="clear-filter-img" src={ClearFilter} onClick={handleFilterOptions} />
+                    </div>
                     {Object.keys(typeList).map((category) => (
                         <div className="filter-content">
                             <div className="filter-header-wrapper" onClick={() => updateCollapsed(category)}>

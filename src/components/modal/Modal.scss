@@ -74,6 +74,15 @@ $transition-speed: 0.5s;
     animation: slide-in $transition-speed;
 }
 
+.clear-filter-wrapper{
+    position: absolute;
+    top:1.5vh;
+    right: 1.5vh
+}
+.clear-filter-wrapper img {
+    width: 2vw;
+}
+
 .filter-content {
     width: fit-content;
 }

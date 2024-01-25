@@ -36,6 +36,10 @@ function Landing() {
         filterOptions.includes(option) ? setFilterOptions(filterOptions.filter((type) => type != option)) : setFilterOptions([...filterOptions, option]);
     }
 
+    const clearFilterOptions = () => {
+        setFilterOptions([]);
+    }
+
     const toggleHelpModal = () => {
         helpModalIsToggled ? setHelpModal(false) : setHelpModal(true);
         setFilterModal(false);
@@ -101,6 +105,7 @@ function Landing() {
                         type={"filter"}
                         updateFilterOptions={updateFilterOptions}
                         filterOptions={filterOptions}
+                        clearFilterOptions={clearFilterOptions}
                     /> 
                 : 
                     ""
