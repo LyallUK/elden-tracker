@@ -2,5 +2,6 @@ DONE:
 
 
 TO DO:
-- Create write to database functions
+- fix bug: when selecting an untracked item as collected it adds to tracker 
+- Make components typesafe
 - CSS updates

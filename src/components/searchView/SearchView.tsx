@@ -1,15 +1,27 @@
 import React from "react";
 
 //Component imports
-import ItemTile from "../itemTile/ItemTile.js";
-import TrackedItemTile from "../trackedItemTile/TrackedItemTile.js";
+import ItemTile from "../itemTile/ItemTile.tsx";
+import TrackedItemTile from "../trackedItemTile/TrackedItemTile.tsx";
 
 //Asset Imports
 import { database as Database } from "../../assets/database.js";
 
 import TrackerViewIcon from "../../assets/icons/tracker-view.svg";
 
-function SearchView({
+
+interface SearchViewProps {
+    searchTerm: string;
+    trackedIDList: string[];
+    onViewChange: (view: string) => void;
+    onTrackToggle: (itemID: string) => void;
+    onCollectToggle: (itemID: string) => void;
+    serveTrackedIcon: (itemID: string) => string;
+    serveCollectedIcon: (itemID: string) => string;
+    filterOptions: string[];
+}
+
+const SearchView = ({
     searchTerm,
     trackedIDList,
     onViewChange,
@@ -18,7 +30,7 @@ function SearchView({
     serveTrackedIcon,
     serveCollectedIcon,
     filterOptions
-}) {
+}: SearchViewProps) => {
     const handleChangeView = () => {
         onViewChange("track");
     };
@@ -29,10 +41,9 @@ function SearchView({
             return (
                 <ItemTile
                     key={item.id}
-                    id={item.id}
+                    id={item.id.toString()}
                     itemName={item.name}
                     itemImage={item.image}
-                    itemCategory={item.category}
                     serveTrackedIcon={serveTrackedIcon}
                     serveCollectedIcon={serveCollectedIcon}
                     onTrackToggle={onTrackToggle}
@@ -40,17 +51,16 @@ function SearchView({
                 />
             );
         });
-
         return filterOptions.length === 0 ? itemList.filter((item) => item.props.itemName.toLowerCase().includes(searchTerm.toLowerCase())) : itemList.filter((item) => item.props.itemName.toLowerCase().includes(searchTerm.toLowerCase()) && filterOptions.includes(item.props.itemCategory.toLowerCase()))
     };
 
     //serve trackedItemTile list of items where item ids match trackedIDList
     const serveTrackedItemList = () => {
-        const trackedItemList = Database.filter((item) => trackedIDList.includes(item.id)).map((item) => {
+        const trackedItemList = Database.filter((item) => trackedIDList.includes(item.id.toString())).map((item) => {
             return (
                 <TrackedItemTile
                     key={item.id}
-                    id={item.id}
+                    id={item.id.toString()}
                     itemName={item.name}
                     itemImage={item.image}
                     serveTrackedIcon={serveTrackedIcon}

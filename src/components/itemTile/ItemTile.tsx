@@ -1,6 +1,16 @@
 import React from "react";
 
-function ItemTile({
+interface ItemTileProps {
+  id: string;
+  itemName: string;
+  itemImage: string;
+  serveTrackedIcon: (itemID: string) => string;
+  serveCollectedIcon: (itemID: string) => string;
+  onTrackToggle: (itemID: string) => void;
+  onCollectToggle: (itemID: string) => void;
+}
+
+const ItemTile = ({
   id,
   itemName,
   itemImage,
@@ -8,7 +18,7 @@ function ItemTile({
   serveCollectedIcon,
   onTrackToggle,
   onCollectToggle,
-}) {
+}: ItemTileProps) => {
   return (
     <div className="item-tile">
       <span className="item-name">{itemName}</span>
@@ -20,17 +30,17 @@ function ItemTile({
           src={serveTrackedIcon(id)}
           onClick={() => onTrackToggle(id)}
           alt="+"
-        ></img>
+        />
         <img
           className="item-button"
           id="collected-button"
           src={serveCollectedIcon(id)}
           onClick={() => onCollectToggle(id)}
           alt="c"
-        ></img>
+        />
       </div>
     </div>
   );
-}
+};
 
 export default ItemTile;
