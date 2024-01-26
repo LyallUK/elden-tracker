@@ -117,7 +117,7 @@ function Modal({
             ) : (
                 <div className="filter-modal-wrapper">
                     <div className="clear-filter-wrapper">
-                        <img classname="clear-filter-img" src={ClearFilter} onClick={handleFilterOptions} />
+                        <img className="clear-filter-img" src={ClearFilter} onClick={handleFilterOptions} />
                     </div>
                     {Object.keys(typeList).map((category) => (
                         <div className="filter-content">

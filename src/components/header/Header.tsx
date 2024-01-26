@@ -1,13 +1,23 @@
 import React from "react";
 
-//Asset Imports
+// Asset Imports
 import GameLogo from "../../assets/art/eldenringlogo.svg";
 import SearchFilter from "../../assets/icons/filterButton.svg";
 import GithubIcon from "../../assets/icons/githubLogo.svg";
 import HelpIcon from "../../assets/icons/helpButton.svg";
 
-function Header({ searchTermCallBack, toggleHelpModal, toggleFilterModal }) {
-    const handleSearchBar = (e) => {
+interface HeaderProps {
+    searchTermCallBack: (term: string) => void;
+    toggleHelpModal: () => void;
+    toggleFilterModal: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({
+    searchTermCallBack,
+    toggleHelpModal,
+    toggleFilterModal
+}) => {
+    const handleSearchBar = (e: React.ChangeEvent<HTMLInputElement>) => {
         searchTermCallBack(e.target.value);
     };
 

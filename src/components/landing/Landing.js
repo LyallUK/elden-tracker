@@ -8,10 +8,10 @@ import CollectIcon from "../../assets/icons/collectButton.svg";
 import UncollectIcon from "../../assets/icons/uncollectButton.svg";
 
 //component imports
-import Header from "../header/Header";
+import Header from "../header/Header.tsx";
 import Modal from "../modal/Modal.js";
-import SearchView from "../searchView/SearchView";
-import TrackerView from "../trackerView/TrackerView";
+import SearchView from "../searchView/SearchView.js";
+import TrackerView from "../trackerView/TrackerView.js";
 
 function Landing() {
     //component states
