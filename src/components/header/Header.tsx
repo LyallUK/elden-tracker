@@ -17,20 +17,20 @@ const Header = ({
   toggleHelpModal,
   toggleFilterModal,
 }: HeaderProps) => {
+
+  //Callback function for search term
   const handleSearchBar = (e: React.ChangeEvent<HTMLInputElement>) => {
     searchTermCallBack(e.target.value);
   };
 
+  //Callback function for toggling Help modal
   const handleToggleHelpModal = () => {
     toggleHelpModal();
   };
 
+  //Callback function for toggling Filter modal
   const handleToggleFilterModal = () => {
     toggleFilterModal();
-  };
-
-  const openLink = () => {
-    window.open("https://github.com/LyallUK/elden-tracker", "_blank");
   };
 
   return (
@@ -38,12 +38,13 @@ const Header = ({
       <div className="header-info">
         <img className="game-logo" src={GameLogo} alt="Game Logo"></img>
         <div className="link-container">
-          <img
-            className="github-logo info-icon"
-            src={GithubIcon}
-            alt="Github"
-            onClick={openLink}
-          />
+          <a className="github-link" href="https://github.com/LyallUK/elden-tracker" target="_blank">
+            <img
+              className="github-logo info-icon"
+              src={GithubIcon}
+              alt="Github"
+            />
+          </a>
           <img
             className="help-logo info-icon"
             src={HelpIcon}

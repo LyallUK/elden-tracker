@@ -19,24 +19,29 @@ const Modal = ({
 }: ModalProps) => {
   const [collapsedCategories, toggleCollapsed] = useState<string[]>([]);
 
+  //If passed category is within collapsedCategories remove it, else add catergory to collapsedCategories
   const updateCollapsed = (category) => {
     collapsedCategories.includes(category)
       ? toggleCollapsed(collapsedCategories.filter((term) => term != category))
       : toggleCollapsed([...collapsedCategories, category]);
   };
 
+  //Callback function for filter options - found in Landing component
   const handleFilterUpdate = (type) => {
     updateFilterOptions?.(type);
   };
 
-  const handleFilterOptions = () => {
+  //Callback function for clearing filter options - found in Landing component
+  const handleClearFilterOptions = () => {
     clearFilterOptions?.();
-  };
+  }; 
 
+  //Checks if passed category is found within collapsedCategories and returns the corresponding icon
   const serveCollapseImages = (category) => {
     return collapsedCategories.includes(category) ? Uncollapse : Collapse;
   };
 
+  //List of types available to filter by for each category
   const typeList = {
     weapons: [
       "axes",
@@ -74,6 +79,7 @@ const Modal = ({
     spells: ["sorceries", "incantations"],
   };
 
+  //Checks if collaspsedCategories includes the passed category, if true serve empty array, else return the corresponding category frorm typeList
   const serveCategory = (category) => {
     return collapsedCategories.includes(category) ? [] : typeList[category];
   };
@@ -135,7 +141,7 @@ const Modal = ({
             <img
               className="clear-filter-img"
               src={ClearFilter}
-              onClick={handleFilterOptions}
+              onClick={handleClearFilterOptions}
             />
           </div>
           {Object.keys(typeList).map((category) => (

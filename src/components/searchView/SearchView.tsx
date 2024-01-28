@@ -35,7 +35,7 @@ const SearchView = ({
         onViewChange("track");
     };
 
-    //serve entire db as list of ItemTile components
+    //Loops through Database and returns a list of ItemTile Components with filter options and search term applied
     const serveItemList = () => {
         const itemList = Database.map((item) => {
             return (
@@ -54,7 +54,7 @@ const SearchView = ({
         return filterOptions.length === 0 ? itemList.filter((item) => item.props.itemName.toLowerCase().includes(searchTerm.toLowerCase())) : itemList.filter((item) => item.props.itemName.toLowerCase().includes(searchTerm.toLowerCase()) && filterOptions.includes(item.props.itemCategory.toLowerCase()))
     };
 
-    //serve trackedItemTile list of items where item ids match trackedIDList
+    //Loops through database and serves a list of trackedItemTile components where the item id exists within the trackedIDList
     const serveTrackedItemList = () => {
         const trackedItemList = Database.filter((item) => trackedIDList.includes(item.id.toString())).map((item) => {
             return (

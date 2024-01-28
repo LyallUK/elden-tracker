@@ -28,6 +28,7 @@ const TrackerView = ({
     onViewChange("search");
   };
 
+  //Loops through Database and returns a list of DetailedItemTile components where the ID is found in trackedIDList
   const serveDetailedItemList = () => {
     const DetailedItemList = Database.filter((item) =>
       trackedIDList.includes(item.id.toString())

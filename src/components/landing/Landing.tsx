@@ -13,7 +13,7 @@ import SearchView from "../searchView/SearchView.tsx";
 import TrackerView from "../trackerView/TrackerView.tsx";
 
 const Landing = () => {
-  //component states
+  //Component State Variables
   const [trackedIDList, setTrackedIDList] = useState<string[]>(
     JSON.parse(localStorage.getItem("trackedIDs") || "[]")
   );
@@ -26,12 +26,13 @@ const Landing = () => {
   const [filterModalIsToggled, setFilterModal] = useState<boolean>(false);
   const [filterOptions, setFilterOptions] = useState<string[]>([]);
 
-  // Save to local storage on state change.
+  //Save IDs of tracked and collected items
   useEffect(() => {
     localStorage.setItem("trackedIDs", JSON.stringify(trackedIDList));
     localStorage.setItem("collectedIDs", JSON.stringify(collectedIDList));
   }, [trackedIDList, collectedIDList]);
 
+  //Update filter options
   const updateFilterOptions = (option: string) => {
     if (filterOptions.length === 0) setFilterOptions([]);
     filterOptions.includes(option)
@@ -39,20 +40,24 @@ const Landing = () => {
       : setFilterOptions([...filterOptions, option]);
   };
 
+  //Clears all filters applied
   const clearFilterOptions = () => {
     setFilterOptions([]);
   };
 
+  //Toggles conditional value for rendering Help modal
   const toggleHelpModal = () => {
     helpModalIsToggled ? setHelpModal(false) : setHelpModal(true);
     setFilterModal(false);
   };
 
+  //Toggles conditional value for rendering Filter modal
   const toggleFilterModal = () => {
     filterModalIsToggled ? setFilterModal(false) : setFilterModal(true);
     setHelpModal(false);
   };
 
+  //If itemID is tracked then remove it from tracking list, otherwise add the itemID to the tracking list
   const handleTrackItem = (itemID: string) => {
     if (trackedIDList.includes(itemID)) {
       setTrackedIDList(
@@ -63,6 +68,7 @@ const Landing = () => {
     }
   };
 
+  //If itemID is collected then remove it from collected list, otherwise add the itemID to the collected list  
   const handleCollectItem = (itemID: string) => {
     if (collectedIDList.includes(itemID)) {
       setCollectedIDList(
@@ -76,27 +82,32 @@ const Landing = () => {
     }
   };
 
-  //handler function for search term - callback function found in Header component
+  //Updates search term - call back function located in Header component
   const handleSearchBar = (searchTerm: string) => {
     setSearchTerm(searchTerm);
   };
 
+  //Updated current view - call back function located in SearchView and TrackingView components
   const handleChangeView = (nextView: string) => {
     setCurrentView(nextView);
   };
 
+  //Checks if passed itemID is tracked and returns booleon value
   const idIsTracked = (itemID: string) => {
     return trackedIDList.includes(itemID);
   };
 
+  //Checks if passed itemID is collect and returns booleon value
   const idIsCollected = (itemID: string) => {
     return collectedIDList.includes(itemID);
   };
 
+  //Checks if passed itemID is tracked and returns corresponding icon
   const serveTrackedIcon = (itemID: string) => {
     return idIsTracked(itemID) ? UntrackIcon : TrackIcon;
   };
 
+  //Checks if passed itemID is collected and returns corresponding icon
   const serveCollectedIcon = (itemID: string) => {
     return idIsCollected(itemID) ? UncollectIcon : CollectIcon;
   };
