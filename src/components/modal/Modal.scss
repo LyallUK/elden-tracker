@@ -75,12 +75,11 @@ $transition-speed: 0.5s;
 }
 
 .clear-filter-wrapper{
-    position: absolute;
-    top:1.5vh;
-    right: 1.5vh
+    display: flex;
+    justify-content: flex-end;
 }
 .clear-filter-img {
-    width: 2vw;
+    width: 1.25vw;
 }
 
 .filter-content {

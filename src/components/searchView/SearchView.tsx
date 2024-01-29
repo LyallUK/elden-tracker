@@ -44,6 +44,7 @@ const SearchView = ({
                     id={item.id.toString()}
                     itemName={item.name}
                     itemImage={item.image}
+                    itemCategory={item.category}
                     serveTrackedIcon={serveTrackedIcon}
                     serveCollectedIcon={serveCollectedIcon}
                     onTrackToggle={onTrackToggle}
