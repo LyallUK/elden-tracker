@@ -4,6 +4,7 @@ interface ItemTileProps {
   id: string;
   itemName: string;
   itemImage: string;
+  itemCategory: string;
   serveTrackedIcon: (itemID: string) => string;
   serveCollectedIcon: (itemID: string) => string;
   onTrackToggle: (itemID: string) => void;

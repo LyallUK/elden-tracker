@@ -38,7 +38,7 @@ const Header = ({
       <div className="header-info">
         <img className="game-logo" src={GameLogo} alt="Game Logo"></img>
         <div className="link-container">
-          <a className="github-link" href="https://github.com/LyallUK/elden-tracker" target="_blank">
+          <a className="github-link" href="https://github.com/LyallUK/elden-tracker" target="_blank" rel="noopener noreferrer">
             <img
               className="github-logo info-icon"
               src={GithubIcon}

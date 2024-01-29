@@ -22,7 +22,7 @@ const Modal = ({
   //If passed category is within collapsedCategories remove it, else add catergory to collapsedCategories
   const updateCollapsed = (category) => {
     collapsedCategories.includes(category)
-      ? toggleCollapsed(collapsedCategories.filter((term) => term != category))
+      ? toggleCollapsed(collapsedCategories.filter((term) => term !== category))
       : toggleCollapsed([...collapsedCategories, category]);
   };
 
@@ -130,6 +130,7 @@ const Modal = ({
               className="help-link"
               target="_blank"
               href="https://eldenring.wiki.fextralife.com/Elden+Ring+Wiki"
+              rel="noopener noreferrer"
             >
               Fextralife Elden Ring Wiki
             </a>
@@ -141,6 +142,7 @@ const Modal = ({
             <img
               className="clear-filter-img"
               src={ClearFilter}
+              alt="clearFilter"
               onClick={handleClearFilterOptions}
             />
           </div>

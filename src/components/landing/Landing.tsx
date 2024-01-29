@@ -36,7 +36,7 @@ const Landing = () => {
   const updateFilterOptions = (option: string) => {
     if (filterOptions.length === 0) setFilterOptions([]);
     filterOptions.includes(option)
-      ? setFilterOptions(filterOptions.filter((type) => type != option))
+      ? setFilterOptions(filterOptions.filter((type) => type !== option))
       : setFilterOptions([...filterOptions, option]);
   };
 
@@ -61,7 +61,7 @@ const Landing = () => {
   const handleTrackItem = (itemID: string) => {
     if (trackedIDList.includes(itemID)) {
       setTrackedIDList(
-        trackedIDList.filter((trackedID) => trackedID != itemID)
+        trackedIDList.filter((trackedID) => trackedID !== itemID)
       );
     } else {
       setTrackedIDList([...trackedIDList, itemID]);
@@ -72,12 +72,12 @@ const Landing = () => {
   const handleCollectItem = (itemID: string) => {
     if (collectedIDList.includes(itemID)) {
       setCollectedIDList(
-        collectedIDList.filter((collectedID) => collectedID != itemID)
+        collectedIDList.filter((collectedID) => collectedID !== itemID)
       );
     } else {
       setCollectedIDList([...collectedIDList, itemID]);
       setTrackedIDList(
-        trackedIDList.filter((trackedID) => trackedID != itemID)
+        trackedIDList.filter((trackedID) => trackedID !== itemID)
       );
     }
   };
