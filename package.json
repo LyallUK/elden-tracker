@@ -2,8 +2,17 @@
     "name": "elden-tracker",
     "version": "0.1.0",
     "private": true,
-    "main": "electron/electron.js",
+    "main": "public/electron.js",
+    "description": "Elden Ring application for tracking wanted and collected items",
+    "author": "Josh Lee & David Lyall",
     "homepage": "./",
+    "build": {
+        "appId": "EldenRing Tracker",
+        "productName": "EldenRing Tracker",
+        "directories": {
+          "output": "dist"
+        }
+    },
     "dependencies": {
         "@testing-library/jest-dom": "^5.17.0",
         "@testing-library/react": "^13.4.0",
@@ -24,7 +33,9 @@
         "start-electron": "electron .",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "pack": "electron-builder --dir",
+        "dist": "electron-builder"
     },
     "eslintConfig": {
         "extends": [
@@ -47,4 +58,5 @@
     "devDependencies": {
         "electron": "^28.1.3"
     }
+    
 }
