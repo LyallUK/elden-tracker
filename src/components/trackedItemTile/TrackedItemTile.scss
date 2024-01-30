@@ -3,26 +3,14 @@
     width: auto;
     display: flex;
     flex-direction: row;
-    text-align: center;
+    text-align: left;
     align-items: center;
-    justify-content: space-between;
     padding: 1rem;
     transition: 0.3s;
-    
 }
 
 .tracker-tile:hover {
     background-color: rgba(0, 0, 0, 0.2);
-}
-
-.tracker-name {
-    color: #a18b5f;
-    letter-spacing: 1px;
-    font-size: clamp(0.8em, 2vw, 1em);
-    text-align: center;
-    display: block;
-    width: 20vw;
-    text-shadow: 0 0.2em 5px black;
 }
 
 .tracker-image {
@@ -30,6 +18,16 @@
     display: block;
     margin: auto;
     pointer-events: none;
+}
+
+.tracker-name {
+    color: #a18b5f;
+    letter-spacing: 1px;
+    font-size: clamp(0.8em, 2vw, 1em);
+    display: flex;
+    padding-left: 1vw;
+    width: 20vw;
+    text-shadow: 0 0.2em 5px black;
 }
 
 .tracker-buttons {
@@ -40,13 +38,13 @@
 .tracker-button {
     display: inline-block;
     align-self: center;
-    width: 1vw;
+    height: 20px;
     transition: 0.3s;
     opacity: 0.2;
-    padding: 10px;
+    margin: 0.7vh;
 }
 
-.-button:hover {
+.tracker-button:hover {
     transform: scale(110%);
     opacity: 1;
 }

@@ -1,2 +1,7 @@
-- added conditionally rendered tracking view button on searchView
-- minor css updates to scrollable sections
+DONE:
+
+
+TO DO:
+- fix bug: when selecting an untracked item as collected it adds to tracker 
+- Make components typesafe
+- CSS updates

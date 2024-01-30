@@ -1,4 +1,43 @@
-.tracker-view-wrapper{
+.tracker-view-wrapper {
     display: flex;
-    flex-grow: 1;
+    flex-direction: column;
+}
+
+.detailed-item-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: flex-start;
+    height: 80vh;
+    overflow-y: scroll;
+}
+
+.search-view-button {
+    margin-top: 2.75vh;
+    margin-bottom: 1vh;
+}
+
+.search-view-button-img {
+    height: fit-content;
+    width: 20px;
+    cursor: pointer;
+    opacity: 0.2;
+    transition: 0.3s;
+}
+
+.search-view-button-img:hover {
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+.tracking-view-button-img {
+    width: 20px;
+    cursor: pointer;
+    opacity: 0.2;
+    transition: 0.3s;
+}
+
+.tracking-view-button-img:hover {
+    transform: scale(1.2);
+    opacity: 1;
 }

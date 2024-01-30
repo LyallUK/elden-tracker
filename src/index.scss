@@ -1,30 +1,31 @@
 @import "./settings.scss";
-@import './components/landing/Landing.scss';
-@import './components/header/Header.scss';
-@import './components/searchView/SearchView.scss';
-@import './components//trackerView/TrackerView.scss';
-@import './components/itemTile/ItemTile.scss';
-@import './components/trackedItemTile/TrackedItemTile.scss';
-@import './components/searchFilter/SearchFilter.scss';
+@import "./components/landing/Landing.scss";
+@import "./components/header/Header.scss";
+@import "./components/searchView/SearchView.scss";
+@import "./components//trackerView/TrackerView.scss";
+@import "./components/itemTile/ItemTile.scss";
+@import "./components/trackedItemTile/TrackedItemTile.scss";
+@import "./components/detailedTrackedItemTile/DetailedItemTile.scss";
+@import "./components/modal/Modal.scss";
 
 body {
-  height: 100vh;
-  user-select: none;
-  overflow: hidden;
-  background-color: rgb(37, 37, 37);
-  color: rgb(190, 190, 190);
-  text-transform: uppercase;
-  font-family: 'Times New Roman', Times, serif;
+    height: 100vh;
+    user-select: none;
+    overflow: hidden;
+    background-color: rgb(20, 20, 20);
+    color: rgb(190, 190, 190);
+    text-transform: uppercase;
+    font-family: "Times New Roman", Times, serif;
 }
 
 *::-webkit-scrollbar {
-  width: 5px;
+    width: 5px;
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: white;
+    background-color: white;
 }
 
 *::-webkit-scrollbar-corner {
-  background: none;
+    background: none;
 }
