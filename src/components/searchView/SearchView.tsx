@@ -9,7 +9,6 @@ import { database as Database } from "../../assets/database.js";
 
 import TrackerViewIcon from "../../assets/icons/tracker-view.svg";
 
-
 interface SearchViewProps {
     searchTerm: string;
     trackedIDList: string[];
@@ -29,7 +28,7 @@ const SearchView = ({
     onCollectToggle,
     serveTrackedIcon,
     serveCollectedIcon,
-    filterOptions
+    filterOptions,
 }: SearchViewProps) => {
     const handleChangeView = () => {
         onViewChange("track");
@@ -52,7 +51,13 @@ const SearchView = ({
                 />
             );
         });
-        return filterOptions.length === 0 ? itemList.filter((item) => item.props.itemName.toLowerCase().includes(searchTerm.toLowerCase())) : itemList.filter((item) => item.props.itemName.toLowerCase().includes(searchTerm.toLowerCase()) && filterOptions.includes(item.props.itemCategory.toLowerCase()))
+        return filterOptions.length === 0
+            ? itemList.filter((item) => item.props.itemName.toLowerCase().includes(searchTerm.toLowerCase()))
+            : itemList.filter(
+                  (item) =>
+                      item.props.itemName.toLowerCase().includes(searchTerm.toLowerCase()) &&
+                      filterOptions.includes(item.props.itemCategory.toLowerCase())
+              );
     };
 
     //Loops through database and serves a list of trackedItemTile components where the item id exists within the trackedIDList
@@ -96,6 +101,6 @@ const SearchView = ({
             <div className="item-list">{serveItemList()}</div>
         </div>
     );
-}
+};
 
 export default SearchView;

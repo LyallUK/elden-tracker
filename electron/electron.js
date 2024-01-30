@@ -9,7 +9,6 @@ const createWindow = () => {
         height: 720,
         width: 1280,
         resizable: false,
-        alwaysOnTop: true,
     });
 
     win.loadURL("http://localhost:3000/");
