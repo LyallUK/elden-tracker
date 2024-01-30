@@ -10,20 +10,12 @@
         "appId": "EldenRing Tracker",
         "productName": "EldenRing Tracker",
         "directories": {
-          "output": "dist"
+            "output": "dist"
         }
     },
     "dependencies": {
-        "@testing-library/jest-dom": "^5.17.0",
-        "@testing-library/react": "^13.4.0",
-        "@testing-library/user-event": "^13.5.0",
-        "@types/jest": "^29.5.11",
-        "@types/node": "^20.11.6",
-        "@types/react": "^18.2.48",
-        "@types/react-dom": "^18.2.18",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "react-scripts": "5.0.1",
         "sass": "^1.69.7",
         "typescript": "^4.9.5",
         "web-vitals": "^2.1.4"
@@ -56,7 +48,15 @@
         ]
     },
     "devDependencies": {
-        "electron": "^28.1.3"
+        "@testing-library/jest-dom": "^5.17.0",
+        "@testing-library/react": "^13.4.0",
+        "@testing-library/user-event": "^13.5.0",
+        "@types/jest": "^29.5.11",
+        "@types/node": "^20.11.6",
+        "@types/react": "^18.2.48",
+        "@types/react-dom": "^18.2.18",
+        "electron": "^28.1.3",
+        "electron-builder": "^24.9.1",
+        "react-scripts": "5.0.1"
     }
-    
 }
